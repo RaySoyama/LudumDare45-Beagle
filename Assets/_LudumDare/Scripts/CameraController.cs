@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
 	public Transform dog;
 
 	private float xOffset = 4f;
-	private float cameraY = 4f;
+	private float yOffset = 4f;
 	private float cameraSpeed = 3f;
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
 		//placeholder
 		transform.LookAt(dog);
 
-		transform.position = Vector3.Lerp(transform.position, new Vector3(dog.position.x - xOffset, cameraY, dog.position.z), Time.deltaTime * cameraSpeed);
+		transform.position = Vector3.Lerp(transform.position, new Vector3(dog.position.x - xOffset, dog.position.y + yOffset, dog.position.z), Time.deltaTime * cameraSpeed);
 
 	}
 }
