@@ -41,7 +41,17 @@ public class InputSystem : MonoBehaviour
         }
     }
 
-    [SerializeField]
+	[SerializeField] [ReadOnlyField]
+	private bool grabed = false;
+	public bool grab
+	{
+		get
+		{
+			return grabed;
+		}
+	}
+
+	[SerializeField]
     private KeyCode forwardKey = KeyCode.W;
     [SerializeField]
     private KeyCode backwardKey = KeyCode.S;
@@ -49,8 +59,10 @@ public class InputSystem : MonoBehaviour
     private KeyCode rightwardKey = KeyCode.D;
     [SerializeField]
     private KeyCode leftwardKey = KeyCode.A;
+	[SerializeField]
+	private KeyCode grabKey = KeyCode.E;
 
-    public InputMode inputMode;
+	public InputMode inputMode;
 
 
     void Start()
@@ -64,7 +76,7 @@ public class InputSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(rightwardKey) || Input.GetKey(leftwardKey)) //Input.GetKey() ||
+        if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(rightwardKey) || Input.GetKey(leftwardKey) || Input.GetKey(grabKey)) //Input.GetKey() ||
         {
             inputMode = InputMode.Keyboard;
         }
@@ -107,6 +119,14 @@ public class InputSystem : MonoBehaviour
         {
             RawInput.x -= 1.0f;
         }
+		if (Input.GetKeyDown(grabKey))
+		{
+			grabed = true;
+		}
+		else
+		{
+			grabed = false;
+		}
 
         directionalInput = RawInput.normalized;
     }

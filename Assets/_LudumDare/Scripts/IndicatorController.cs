@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class IndicatorController : MonoBehaviour
 {
+
+	private GameObject selected;
+
 	[SerializeField]
 	public float distanceThreshold;
 
@@ -30,6 +33,7 @@ public class IndicatorController : MonoBehaviour
 		{
 			gameObject.GetComponent<SpriteRenderer>().enabled = false;
 			transform.position = dog.transform.position;
+			selected = null;
 		}
 		else
 		{
@@ -60,12 +64,14 @@ public class IndicatorController : MonoBehaviour
 			{
 				gameObject.GetComponent<SpriteRenderer>().enabled = true;
 				transform.position = closest.position;
+				selected = closest.gameObject;
 				//transform.localScale = new Vector3(closest.lossyScale.x, closest.lossyScale.y, transform.lossyScale.z);
 			}
 			else
 			{
 				gameObject.GetComponent<SpriteRenderer>().enabled = false;
 				transform.position = dog.transform.position;
+				selected = null;
 			}
 
 			transform.LookAt(cameraTransform);
@@ -96,4 +102,10 @@ public class IndicatorController : MonoBehaviour
 		}
 
 	}
+
+	public GameObject GetSelected()
+	{
+		return selected;
+	}
+
 }

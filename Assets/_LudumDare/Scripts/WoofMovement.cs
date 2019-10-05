@@ -13,13 +13,17 @@ public class WoofMovement : MonoBehaviour
     private GameObject mainCamera;
     public bool cameraForward;
 	private Transform dogModel;
+	private IndicatorController indicatorScript;
 
 
-    void Start()
+	void Start()
     {
         mainCamera = Camera.main.gameObject;
+		//dependent on the model being the first child bad
 		dogModel = transform.GetChild(0);
-    }
+		//dependent on the indicator being the second child bad
+		indicatorScript = transform.GetChild(1).GetComponent<IndicatorController>();
+	}
 
     void Update()
     {
@@ -39,7 +43,15 @@ public class WoofMovement : MonoBehaviour
             gameObject.transform.Translate(new Vector3(InputSystem.WoofInput.DirectionalInput.x,0, InputSystem.WoofInput.DirectionalInput.y) * Speed * Time.deltaTime);
         }
 
+		if (InputSystem.WoofInput.grab)
+		{
+			GameObject selected = indicatorScript.GetSelected();
 
+			if (selected)
+			{
+				//move selected object to mouth snap point
+			}
+		}
 
     }
 }
