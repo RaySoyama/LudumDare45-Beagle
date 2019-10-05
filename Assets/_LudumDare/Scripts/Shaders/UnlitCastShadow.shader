@@ -39,7 +39,7 @@
 		{
 			fixed4 col = tex2D(_MainTex, IN.uv_MainTex);
 			//o.Albedo = col.rgb;
-			o.Emission = col.rgb;
+			o.Emission = col.rgb * _Color;
 		}
 
         ENDCG

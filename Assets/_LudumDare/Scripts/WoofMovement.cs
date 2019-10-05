@@ -6,6 +6,7 @@ public class WoofMovement : MonoBehaviour
 {
 	[SerializeField]
 	private float Speed;
+    [SerializeField]
 	private float rotationSpeed = 8f;
 
 

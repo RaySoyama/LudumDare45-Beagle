@@ -40,12 +40,13 @@ Shader "Ray Shaders/UnlitReceiveShadow" {
 					}
 
 					sampler2D _MainTex;
+					fixed4 _Color;
 
 					fixed4 frag(v2f i) : COLOR
 					{
 						//fixed atten = LIGHT_ATTENUATION(i);	// Light attenuation + shadows.
 						fixed atten = SHADOW_ATTENUATION(i); // Shadows ONLY.
-						return tex2D(_MainTex, i.uv) * atten;
+						return tex2D(_MainTex, i.uv) * atten * _Color;
 					}
 				ENDCG
 			}
