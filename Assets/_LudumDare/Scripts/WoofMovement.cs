@@ -22,7 +22,7 @@ public class WoofMovement : MonoBehaviour
 		//dependent on the model being the first child bad
 		dogModel = transform.GetChild(0);
 		//dependent on the indicator being the second child bad
-		indicatorScript = transform.GetChild(1).GetComponent<IndicatorController>();
+		//indicatorScript = transform.GetChild(1).GetComponent<IndicatorController>();
 	}
 
     void Update()
@@ -54,4 +54,30 @@ public class WoofMovement : MonoBehaviour
 		}
 
     }
+
+    //test
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("yeet");
+
+        if (other.CompareTag("AreaTrigger") == true)
+        {
+            CameraController.CamController.EnterCave();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("yeet");
+
+        if (other.CompareTag("AreaTrigger") == true)
+        {
+            CameraController.CamController.ExitCave();
+        }
+    }
+
+
+
+
+
 }

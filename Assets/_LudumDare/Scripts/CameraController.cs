@@ -1,28 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 public class CameraController : MonoBehaviour
 {
-	public Transform dog;
+    //public Transform dog;
 
-	private float xOffset = 4f;
-	private float yOffset = 4f;
-	private float cameraSpeed = 3f;
+    public static CameraController CamController;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private CinemachineVirtualCamera feildCam;
+
+    [SerializeField]
+    private CinemachineVirtualCamera caveCam;
+
+
     void Start()
     {
-        
+        if (CamController == null)
+        {
+            CamController = this;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
 		//placeholder
-		transform.LookAt(dog);
+		//transform.LookAt(dog);
 
-		transform.position = Vector3.Lerp(transform.position, new Vector3(dog.position.x - xOffset, dog.position.y + yOffset, dog.position.z), Time.deltaTime * cameraSpeed);
-
+		//transform.position = Vector3.Lerp(transform.position, new Vector3(dog.position.x - xOffset, dog.position.y + yOffset, dog.position.z), Time.deltaTime * cameraSpeed);
 	}
+
+
+    public void EnterCave()
+    {
+        caveCam.Priority = 11;
+    }
+
+    public void ExitCave()
+    { 
+        caveCam.Priority = 9;    
+    }
+
 }
