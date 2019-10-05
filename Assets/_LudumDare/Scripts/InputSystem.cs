@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class InputSystem : MonoBehaviour
 {
+    public enum InputMode
+    { 
+        Null,
+        Keyboard,
+        Controller
+    }
+
+
+    public static InputSystem WoofInput;
+
+
     [SerializeField] [ReadOnlyField]
     private Vector2 directionalInput;
     public Vector2 DirectionalInput
@@ -14,23 +25,19 @@ public class InputSystem : MonoBehaviour
         }
     }
 
-    [SerializeField] [ReadOnlyField]
-    private float forwardValue;
     public float ForwadValue
     {
         get 
         {
-            return forwardValue;
+            return directionalInput.y;
         }
     }
 
-    [SerializeField][ReadOnlyField]
-    private float sidewayValue;
     public float SidewayValue
     {
         get
         {
-           return sidewayValue;
+           return directionalInput.x;
         }
     }
 
@@ -43,10 +50,65 @@ public class InputSystem : MonoBehaviour
     [SerializeField]
     private KeyCode leftwardKey = KeyCode.A;
 
+    public InputMode inputMode;
+
+
+    void Start()
+    {
+        if (WoofInput == null)
+        {
+            WoofInput = this;
+        }
+    }
 
 
     void Update()
     {
-        
+        if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(rightwardKey) || Input.GetKey(leftwardKey)) //Input.GetKey() ||
+        {
+            inputMode = InputMode.Keyboard;
+        }
+
+        if (inputMode == InputMode.Controller)
+        {
+            ControllerInputLoop();
+        }
+        else if (inputMode == InputMode.Keyboard)
+        {
+            KeyboardInputLoop();
+        }
+
+
     }
+
+    private void ControllerInputLoop()
+    { 
+        
+
+    }
+
+    private void KeyboardInputLoop()
+    {
+        Vector2 RawInput = Vector2.zero;
+
+        if ((Input.GetKey(forwardKey)) == true)
+        {
+            RawInput.y += 1.0f;
+        }
+        if ((Input.GetKey(backwardKey)) == true)
+        {
+            RawInput.y -= 1.0f;
+        }
+        if ((Input.GetKey(rightwardKey)) == true)
+        {
+            RawInput.x += 1.0f;
+        }
+        if ((Input.GetKey(leftwardKey)) == true)
+        {
+            RawInput.x -= 1.0f;
+        }
+
+        directionalInput = RawInput.normalized;
+    }
+
 }
