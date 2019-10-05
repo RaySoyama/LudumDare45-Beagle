@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class IndicatorController : MonoBehaviour
 {
+	[SerializeField]
+	public float distanceThreshold;
+
 	private Transform cameraTransform;
 	private Transform dog;
 
@@ -14,50 +17,59 @@ public class IndicatorController : MonoBehaviour
     {
 		cameraTransform = FindObjectsOfType<Camera>()[0].transform;
 		dog = transform.parent.transform;
+		
 	}
 
     // Update is called once per frame
     void Update()
     {
-		//find all pickups in radius and "select" the one closest to the dog
-		//set position to that object's center and set scale to be that object's
+		Debug.Log(dog.position);
 
-		Transform closest = null;
-		float closestDist = 0f;
-
-		//Find closest pickup in radius
-		foreach (Transform pick in pickupList)
+		//if dog gets too far go back to it.
+		if (Vector3.Distance(transform.position, dog.position) > distanceThreshold)
 		{
-			float dist = Vector3.Distance(pick.position, dog.position);
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			transform.position = dog.transform.position;
+		}
+		else
+		{
+			Transform closest = null;
+			float closestDist = 0f;
 
-			if (closest)
+			//Find closest pickup in radius
+			foreach (Transform pick in pickupList)
 			{
-				if (dist < closestDist)
+				float dist = Vector3.Distance(pick.position, dog.position);
+
+				if (closest)
+				{
+					if (dist < closestDist)
+					{
+						closest = pick;
+						closestDist = dist;
+					}
+				}
+				else
 				{
 					closest = pick;
 					closestDist = dist;
 				}
 			}
+
+			if (closest)
+			{
+				gameObject.GetComponent<SpriteRenderer>().enabled = true;
+				transform.position = closest.position;
+				//transform.localScale = new Vector3(closest.lossyScale.x, closest.lossyScale.y, transform.lossyScale.z);
+			}
 			else
 			{
-				closest = pick;
-				closestDist = dist;
+				gameObject.GetComponent<SpriteRenderer>().enabled = false;
+				transform.position = dog.transform.position;
 			}
-		}
 
-		if (closest)
-		{
-			gameObject.GetComponent<SpriteRenderer>().enabled = true;
-			transform.position = closest.position;
-			//transform.localScale = new Vector3(closest.lossyScale.x, closest.lossyScale.y, transform.lossyScale.z);
+			transform.LookAt(cameraTransform);
 		}
-		else
-		{
-			gameObject.GetComponent<SpriteRenderer>().enabled = false;
-		}
-
-		transform.LookAt(cameraTransform);
-
 		//transform.Rotate(transform.forward);
     }
 
@@ -82,5 +94,6 @@ public class IndicatorController : MonoBehaviour
 			}
 			
 		}
+
 	}
 }
