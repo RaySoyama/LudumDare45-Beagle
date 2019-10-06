@@ -20,5 +20,17 @@ public class ObjectData : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private bool holdInMouth;
+
+    public bool HoldInMouth
+    {
+        get 
+        {
+            return holdInMouth;
+        }
+    }
+
+
     public List<Transform> grabPoints;
 }

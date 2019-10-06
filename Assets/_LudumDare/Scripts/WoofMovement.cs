@@ -13,7 +13,6 @@ public class WoofMovement : MonoBehaviour
     private GameObject mainCamera;
     public bool cameraForward;
 	private Transform dogModel;
-	private IndicatorController indicatorScript;
 	public Transform mouthPoint;
 
 	private GameObject heldObject = null;
@@ -25,7 +24,6 @@ public class WoofMovement : MonoBehaviour
 		//dependent on the model being the first child bad
 		dogModel = transform.GetChild(0);
 		//dependent on the indicator being the second child bad
-		indicatorScript = transform.GetChild(1).GetComponent<IndicatorController>();
 	}
 
     void Update()
@@ -48,6 +46,7 @@ public class WoofMovement : MonoBehaviour
 
 		
         //AIDS
+        /*
         
         if (InputSystem.WoofInput.IsGrabbed)
 		{
@@ -73,6 +72,7 @@ public class WoofMovement : MonoBehaviour
 		{
 			heldObject.transform.position = mouthPoint.position;
 		}
+         */
 
     }
 
