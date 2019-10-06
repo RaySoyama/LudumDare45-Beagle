@@ -20,6 +20,8 @@ public class PickupController : MonoBehaviour
     private GameObject objectInMouth;
     [SerializeField][ReadOnlyField]
     private GameObject objectInMouthGrabPoint;
+    [SerializeField][ReadOnlyField]
+    private GameObject lastObjectInMouth;
 
 
 
@@ -117,7 +119,7 @@ public class PickupController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Pickup") == true)
+        if (other.CompareTag("Pickup") == true && other.gameObject != lastObjectInMouth)
         {
             avaliblePickups.Remove(other.gameObject);
             avaliblePickupData.Remove(other.GetComponent<ObjectData>());
@@ -131,7 +133,6 @@ public class PickupController : MonoBehaviour
 
         if (closestObjectData.HoldInMouth == true)
         {
-            objectInMouth.gameObject.GetComponent<Rigidbody>().useGravity = false;
             objectInMouth.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             objectInMouth.gameObject.GetComponent<Collider>().isTrigger = true;
 
@@ -150,9 +151,11 @@ public class PickupController : MonoBehaviour
 
     private void DropObjectInMouth()
     {
-        objectInMouth.GetComponent<Rigidbody>().useGravity = true;
         objectInMouth.GetComponent<Rigidbody>().isKinematic = false;
         objectInMouth.gameObject.GetComponent<Collider>().isTrigger = false;
+
+
+        lastObjectInMouth = objectInMouth;
         objectInMouth.transform.parent = null;
         objectInMouth = null;
         objectInMouthGrabPoint = null;
