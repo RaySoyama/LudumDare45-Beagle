@@ -171,7 +171,6 @@ public class PickupController : MonoBehaviour
         avaliblePickupData.Remove(objectInMouth.GetComponent<ObjectData>());
 
         objectInMouth.transform.parent = null;
-        //objectInMouth.transform.position = new Vector3(objectInMouth.transform.position);
         objectInMouth = null;
         objectInMouthGrabPoint = null;
 

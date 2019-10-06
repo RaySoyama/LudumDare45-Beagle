@@ -23,7 +23,7 @@ public class ObjectData : MonoBehaviour
     }
 
     [SerializeField]
-    private bool holdInMouth;
+    private bool holdInMouth = true;
 
     public bool HoldInMouth
     {
@@ -38,4 +38,7 @@ public class ObjectData : MonoBehaviour
     public bool isPickupable = true;
 
     public List<Transform> grabPoints;
+
+    public float timeInFire = 0;
+
 }

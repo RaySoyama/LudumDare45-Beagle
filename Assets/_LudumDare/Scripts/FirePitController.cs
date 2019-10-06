@@ -8,7 +8,7 @@ public class FirePitController : MonoBehaviour
 	private List<GameObject> sticks = new List<GameObject>();
     
     [SerializeField][ReadOnlyField]
-	private List<GameObject> meatChunks = new List<GameObject>();
+	private List<ObjectData> meatChunks = new List<ObjectData>();
 	public int numberOfSticksNeeded = 3;
 
 	[ReadOnlyField]
@@ -18,41 +18,71 @@ public class FirePitController : MonoBehaviour
 
     [SerializeField]
     private Material cookedMeatMat;
+    [SerializeField]
+    private Material burnedMeatMat;
 
-    private Collider fireCollider;
+    [SerializeField]
+    private float timeToCook = 3.0f;
+
+    [SerializeField]
+    private float timeToBurn = 6.0f;
+
+
+
+    [SerializeField]
+    private GameObject innerFireCollider;
+
+    [SerializeField]
+    private Collider outerFireCollider;
+
+
+    Coroutine fireCoroutine;
 	private void Start()
 	{
-        fireCollider = GetComponent<Collider>();
+        fire.SetActive(false);
+        innerFireCollider.SetActive(false);
 	}
 
-    private float fireTimer;
 
 	void FixedUpdate()
     {
-		if (onFire == false && sticks.Count >= numberOfSticksNeeded )
+		if (sticks.Count >= numberOfSticksNeeded )
 		{
-			//Light the fire
+            //Light the fire
+            if (fireCoroutine == null)
+            { 
+               fireCoroutine = StartCoroutine(StartFire());
+            }
+
 			onFire = true;
-		}
-		else if (onFire == false)
-		{
-			//unlight the fire
-			onFire = false;
-			fire.SetActive(false);
 		}
 
 		if (onFire)
 		{
-            StartFire();
-    
+            if (sticks.Count > 0)
+            {
+                if (fireCoroutine == null)
+                {
+                    fireCoroutine = StartCoroutine(StartFire());
+                }
+            }
 
-            foreach (GameObject chunk in meatChunks)
+            foreach (ObjectData chunk in meatChunks)
 			{
+                chunk.timeInFire += Time.deltaTime;
 
+                if (chunk.timeInFire > timeToCook)
+                {
+                    chunk.gameObject.GetComponentInChildren<Renderer>().material = cookedMeatMat;
+                 
+                    if (chunk.timeInFire > timeToBurn)
+                    {
+                        chunk.gameObject.GetComponentInChildren<Renderer>().material = burnedMeatMat;
+                    }
+
+                }
 
 			}
-
-			meatChunks = new List<GameObject>();
 
 		}
 
@@ -60,7 +90,7 @@ public class FirePitController : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Pickup")
+		if (other.gameObject.CompareTag("Pickup"))
 		{
 			ObjectData obj = other.gameObject.GetComponent<ObjectData>();
 
@@ -73,58 +103,85 @@ public class FirePitController : MonoBehaviour
 			}
 			else if(obj.Type == ObjectData.ObjectType.MeatChunk)
 			{
-				if (!meatChunks.Contains(other.gameObject))
+				if (!meatChunks.Contains(other.GetComponent<ObjectData>()))
 				{
-					meatChunks.Add(other.gameObject);
+					meatChunks.Add(other.GetComponent<ObjectData>());
+                    Debug.Log("meat added");
 				}
 			}
 		}
 
 
-
 	}
 
-	private void OnTriggerExit(Collider other)
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pickup"))
+        {
+            ObjectData obj = other.gameObject.GetComponent<ObjectData>();
+
+            if (obj.Type == ObjectData.ObjectType.MeatChunk)
+            {
+                if (!meatChunks.Contains(other.GetComponent<ObjectData>()))
+                {
+                    meatChunks.Add(other.GetComponent<ObjectData>());
+                    Debug.Log("meat added");
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.tag == "Pickup")
 		{
 			ObjectData obj = other.gameObject.GetComponent<ObjectData>();
-			if (obj.Type == ObjectData.ObjectType.SmallStick || obj.Type == ObjectData.ObjectType.BigStick)
-			{
-				if (sticks.Contains(other.gameObject))
-				{
-					sticks.Remove(other.gameObject);
-				}
-				else if (obj.Type == ObjectData.ObjectType.MeatChunk)
-				{
-					if (meatChunks.Contains(other.gameObject))
-					{
-						meatChunks.Remove(other.gameObject);
-					}
-				}
-			}
+            if (obj.Type == ObjectData.ObjectType.SmallStick || obj.Type == ObjectData.ObjectType.BigStick)
+            {
+                if (onFire == true)
+                {
+                    return;
+                }
+
+                if (sticks.Contains(other.gameObject))
+                {
+                    sticks.Remove(other.gameObject);
+                }
+            }
+            else if (obj.Type == ObjectData.ObjectType.MeatChunk)
+            {
+                if (meatChunks.Contains(other.GetComponent<ObjectData>()))
+                {
+                    meatChunks.Remove(other.GetComponent<ObjectData>());
+                    Debug.Log("meat removed");
+                }
+            }
+			
 		}
 	}
 
-    private void StartFire()
+    private IEnumerator StartFire()
     {
         //fireCollider.isTrigger = false;
-        fireTimer += Time.deltaTime;
 
-        if (fireTimer >= 0.5f)
+
+        yield return new WaitForSeconds(1.5f);
+
+        foreach (GameObject stook in sticks)
         {
-            foreach (GameObject stook in sticks)
-            {
-                stook.GetComponent<ObjectData>().isPickupable = false;
-                stook.GetComponent<Rigidbody>().isKinematic = true;
-            }
-
+            stook.GetComponent<ObjectData>().isPickupable = false;
+            stook.GetComponent<Rigidbody>().isKinematic = true;
         }
-        if (fireTimer >= 1.5)
-        {
+        
+        sticks.Clear();
+
+
+        yield return new WaitForSeconds(0.5f);
+
             fire.SetActive(true);
-            fireCollider.isTrigger = false;
-        }
-    }
+            innerFireCollider.SetActive(true);
 
+        fireCoroutine = null;
+        yield return null;
+    }
 }
