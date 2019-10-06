@@ -5,7 +5,19 @@ using UnityEngine;
 public class WoofMovement : MonoBehaviour
 {
 	[SerializeField]
-	private float Speed;
+	private float currentSpeed;
+	[SerializeField]
+	private float defaultSpeed;
+    [SerializeField]
+	private float defaultAnimSpeed;
+
+	[SerializeField]
+	private float runSpeed;
+    [SerializeField]
+	private float runAnimSpeed;
+    
+
+
     [SerializeField]
 	private float rotationSpeed = 8f;
 
@@ -36,26 +48,40 @@ public class WoofMovement : MonoBehaviour
             //I hope this line of code gets Aids and dies
             Vector3 hori = InputSystem.WoofInput.DirectionalInput.y * new Vector3(mainCamera.transform.forward.normalized.x,0, mainCamera.transform.forward.normalized.z);
             Vector3 vert = InputSystem.WoofInput.DirectionalInput.x * new Vector3(mainCamera.transform.right.normalized.x, 0, mainCamera.transform.right.normalized.z);
-            gameObject.transform.Translate((hori+vert) * Speed * Time.deltaTime);
+            gameObject.transform.Translate((hori+vert) * currentSpeed * Time.deltaTime);
 
 			//Rotate to movement direction.
 			dogModel.rotation = Quaternion.LookRotation(Vector3.Lerp(dogModel.forward, (hori + vert), Time.deltaTime * rotationSpeed));
 
+            anim.SetBool("isWalking", true);
+
+            if (InputSystem.WoofInput.IsRunning == true)
+            {
+                currentSpeed = runSpeed;
+                anim.speed = runAnimSpeed;
+            }
+            else 
+            {
+                currentSpeed = defaultSpeed;
+                anim.speed = defaultAnimSpeed;
+            }
+
 		}
         else 
         {
-            gameObject.transform.Translate(new Vector3(InputSystem.WoofInput.DirectionalInput.x,0, InputSystem.WoofInput.DirectionalInput.y) * Speed * Time.deltaTime);
+            anim.SetBool("isWalking", false);
+            //gameObject.transform.Translate(new Vector3(InputSystem.WoofInput.DirectionalInput.x,0, InputSystem.WoofInput.DirectionalInput.y) * Speed * Time.deltaTime);
         }
 
         if (InputSystem.WoofInput.IsDucking == true)
         {
-            anim.SetLayerWeight(2,InputSystem.WoofInput.DuckValue);
-            //anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 1, headDownSpeed * Time.deltaTime));
+            //anim.SetLayerWeight(2,InputSystem.WoofInput.DuckValue);
+            anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 1, headDownSpeed * Time.deltaTime));
         }
-        //else 
-        //{
-        //    //anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 0, headDownSpeed * Time.deltaTime));
-        //}
+        else
+        {
+            anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 0, headDownSpeed * Time.deltaTime));
+        }
     }
 
     //test

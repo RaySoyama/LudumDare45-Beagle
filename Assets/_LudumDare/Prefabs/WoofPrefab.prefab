@@ -922,12 +922,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949356e6f8744d746b77054a0fff1430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  currentSpeed: 0
+  defaultSpeed: 1
+  defaultAnimSpeed: 1.5
+  runSpeed: 3
+  runAnimSpeed: 1.5
   rotationSpeed: 20
   cameraForward: 1
   mouthPoint: {fileID: 4967595148145999863}
   anim: {fileID: 6119158954921844929}
-  headDownSpeed: 3
+  headDownSpeed: 10
 --- !u!114 &6381283423262789302
 MonoBehaviour:
   m_ObjectHideFlags: 0

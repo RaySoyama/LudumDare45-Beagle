@@ -42,6 +42,17 @@ public class InputSystem : MonoBehaviour
     }
 
     [SerializeField] [ReadOnlyField]
+    private bool isRunning;
+    public bool IsRunning
+    {
+        get 
+        {
+            return isRunning;
+        }
+    }
+
+
+    [SerializeField] [ReadOnlyField]
     private bool isGrabbing = false;
     public bool IsGrabbing
     {
@@ -96,6 +107,16 @@ public class InputSystem : MonoBehaviour
         }
     }
 
+    [SerializeField] [ReadOnlyField]
+    private bool isMenuDown;
+    public bool IsMenuDown
+    {
+        get 
+        {
+            return isMenuDown;
+        }
+    }
+
 
     [SerializeField]
     private KeyCode forwardKey = KeyCode.W;
@@ -105,12 +126,18 @@ public class InputSystem : MonoBehaviour
     private KeyCode rightwardKey = KeyCode.D;
     [SerializeField]
     private KeyCode leftwardKey = KeyCode.A;
+    [SerializeField]
+    private KeyCode runKey = KeyCode.LeftShift;
 	[SerializeField]
-	private KeyCode grabKey = KeyCode.Space;
+	private int grabKeyMouseIdx = 0;
     [SerializeField]
-    private KeyCode zoomInKey = KeyCode.LeftShift;
+	private int duckKeyMouseIdx = 1;
     [SerializeField]
-    private KeyCode zoomOutKey = KeyCode.LeftControl;
+    private KeyCode zoomInKey = KeyCode.LeftControl;
+    [SerializeField]
+    private KeyCode zoomOutKey = KeyCode.LeftShift;
+    [SerializeField]
+    private KeyCode menuKey = KeyCode.Escape;
 
 
 
@@ -119,6 +146,8 @@ public class InputSystem : MonoBehaviour
     [SerializeField]
     private string joystickVertical = "Vertical";
     [SerializeField]
+    private string runButton = "RightBumper";
+    [SerializeField]
     private string grabButton = "XboxA";
     [SerializeField]
     private string duckButton = "LeftTrigger";
@@ -126,6 +155,8 @@ public class InputSystem : MonoBehaviour
     private string zoomInButton = "LeftBumper";
     [SerializeField]
     private string zoomOutButton = "RightBumper";
+    [SerializeField]
+    private string menuButton = "Start";
 
     public InputMode inputMode;
 
@@ -141,14 +172,16 @@ public class InputSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || 
-            Input.GetButton(grabButton) || Input.GetAxis(duckButton) != 0.0f || Input.GetButton(zoomInButton) || Input.GetButton(zoomOutButton))
+        if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || Input.GetButton(runButton) || 
+            Input.GetButton(grabButton) || Input.GetAxis(duckButton) != 0.0f || Input.GetButton(zoomInButton) || 
+            Input.GetButton(zoomOutButton) || Input.GetButtonDown(menuButton))
         {
             inputMode = InputMode.Controller;
         }
 
         if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(rightwardKey) ||
-            Input.GetKey(leftwardKey) || Input.GetKey(grabKey)|| Input.GetKey(zoomInKey) || Input.GetKey(zoomOutKey)) //||Input.GetKey()
+            Input.GetKey(leftwardKey) || Input.GetKey(runKey) || Input.GetMouseButton(grabKeyMouseIdx) || Input.GetMouseButton(duckKeyMouseIdx) || Input.GetKey(zoomInKey) ||
+            Input.GetKey(zoomOutKey) || Input.GetKeyDown(menuKey)) //||Input.GetKey()
         {
             inputMode = InputMode.Keyboard;
         }
@@ -161,8 +194,6 @@ public class InputSystem : MonoBehaviour
         {
             KeyboardInputLoop();
         }
-
-
     }
 
     private void ControllerInputLoop()
@@ -171,6 +202,8 @@ public class InputSystem : MonoBehaviour
         
         isGrabbing = Input.GetButton(grabButton);
         
+        isRunning = Input.GetButton(runButton);
+
         duckValue = Input.GetAxis(duckButton);
 
         if (duckValue >= 0.1f)
@@ -181,6 +214,8 @@ public class InputSystem : MonoBehaviour
         {
             isDucking = false;        
         }
+
+        isMenuDown = Input.GetButtonDown(menuButton);
 
         isZoomingIn = Input.GetButton(zoomInButton);
         isZoomingOut = Input.GetButton(zoomOutButton);
@@ -208,12 +243,24 @@ public class InputSystem : MonoBehaviour
             RawInput.x -= 1.0f;
         }
 
-     
-        isGrabbing = Input.GetKey(grabKey);
+
+        isRunning = Input.GetKey(runKey);
+
+        isGrabbing = Input.GetMouseButton(grabKeyMouseIdx);
+        isDucking = Input.GetMouseButton(duckKeyMouseIdx);
+        if (isDucking == true)
+        {
+            duckValue = 1;
+        }
+        else
+        {
+            duckValue = 0;
+        }
 
         isZoomingIn = Input.GetKey(zoomInKey);
         isZoomingOut = Input.GetKey(zoomOutKey);
 
+        isMenuDown = Input.GetKeyDown(menuKey);
 
         directionalInput = RawInput.normalized;
     }
