@@ -26,7 +26,6 @@ public class IndicatorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		Debug.Log(dog.position);
 
 		//if dog gets too far go back to it.
 		if (Vector3.Distance(transform.position, dog.position) > distanceThreshold)

@@ -14,6 +14,9 @@ public class WoofMovement : MonoBehaviour
     public bool cameraForward;
 	private Transform dogModel;
 	private IndicatorController indicatorScript;
+	public Transform mouthPoint;
+
+	private GameObject heldObject = null;
 
 
 	void Start()
@@ -22,7 +25,7 @@ public class WoofMovement : MonoBehaviour
 		//dependent on the model being the first child bad
 		dogModel = transform.GetChild(0);
 		//dependent on the indicator being the second child bad
-		//indicatorScript = transform.GetChild(1).GetComponent<IndicatorController>();
+		indicatorScript = transform.GetChild(1).GetComponent<IndicatorController>();
 	}
 
     void Update()
@@ -45,12 +48,30 @@ public class WoofMovement : MonoBehaviour
 
 		if (InputSystem.WoofInput.grab)
 		{
-			GameObject selected = indicatorScript.GetSelected();
-
-			if (selected)
+			Debug.Log("grab button");
+			if (!heldObject)
 			{
-				//move selected object to mouth snap point
+				GameObject selected = indicatorScript.GetSelected();
+
+				if (selected)
+				{
+					Debug.Log("grabbing " + selected.name);
+					//move selected object to mouth snap point
+					heldObject = selected;
+				}
 			}
+			else
+			{
+				Debug.Log("dropping " + heldObject);
+				heldObject = null;
+				//drop object
+			}
+		}
+
+		//If we have a held object move it to our mouth
+		if (heldObject)
+		{
+			heldObject.transform.position = mouthPoint.position;
 		}
 
     }

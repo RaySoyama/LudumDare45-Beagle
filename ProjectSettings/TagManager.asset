@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickup
   - AreaTrigger
+  - MouthPoint
   layers:
   - Default
   - TransparentFX
