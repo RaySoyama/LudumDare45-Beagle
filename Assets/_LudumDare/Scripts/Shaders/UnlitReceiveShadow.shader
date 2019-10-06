@@ -7,7 +7,13 @@ Shader "Ray Shaders/UnlitReceiveShadow" {
 	}
 		SubShader{
 			Tags {"Queue" = "Geometry" "RenderType" = "Opaque"}
+			//Tags { "Queue" = "Transparent" "RenderType" = "Transparent" }
+			//LOD 100
 
+			//ZWrite Off
+			//Blend SrcAlpha OneMinusSrcAlpha
+			
+		
 			Pass {
 				Tags {"LightMode" = "ForwardBase"}
 				CGPROGRAM
