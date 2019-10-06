@@ -44,36 +44,6 @@ public class WoofMovement : MonoBehaviour
             gameObject.transform.Translate(new Vector3(InputSystem.WoofInput.DirectionalInput.x,0, InputSystem.WoofInput.DirectionalInput.y) * Speed * Time.deltaTime);
         }
 
-		
-        //AIDS
-        /*
-        
-        if (InputSystem.WoofInput.IsGrabbed)
-		{
-			if (!heldObject)
-			{
-				GameObject selected = indicatorScript.GetSelected();
-
-				if (selected)
-				{
-					//move selected object to mouth snap point
-					heldObject = selected;
-				}
-			}
-		}
-		else
-		{
-			heldObject = null;
-			//drop object
-		}
-
-		//If we have a held object move it to our mouth
-		if (heldObject)
-		{
-			heldObject.transform.position = mouthPoint.position;
-		}
-         */
-
     }
 
     //test
@@ -89,6 +59,8 @@ public class WoofMovement : MonoBehaviour
     {
         if (other.CompareTag("AreaTrigger") == true)
         {
+            //Hard Coded
+
             CameraController.CamController.ExitCave();
         }
     }

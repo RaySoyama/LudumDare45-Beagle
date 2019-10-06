@@ -68,7 +68,7 @@ public class PickupController : MonoBehaviour
                 pickupIndicator.transform.position = new Vector3(closestGrabpoint.transform.position.x, closestGrabpoint.transform.position.y + 0.1f, closestGrabpoint.transform.position.z);
             }
 
-            if (InputSystem.WoofInput.IsGrabbed == true)
+            if (InputSystem.WoofInput.IsGrabbing == true)
             {
                 if (objectInMouth == null)
                 {
@@ -97,7 +97,7 @@ public class PickupController : MonoBehaviour
 
         if (objectInMouth != null)
         {
-            if (InputSystem.WoofInput.IsGrabbed == false)
+            if (InputSystem.WoofInput.IsGrabbing == false)
             {
                 DropObjectInMouth();
             }

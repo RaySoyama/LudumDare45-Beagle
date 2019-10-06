@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputSystem : MonoBehaviour
 {
     public enum InputMode
-    { 
+    {
         Null,
         Keyboard,
         Controller
@@ -19,7 +19,7 @@ public class InputSystem : MonoBehaviour
     private Vector2 directionalInput;
     public Vector2 DirectionalInput
     {
-        get 
+        get
         {
             return directionalInput;
         }
@@ -27,7 +27,7 @@ public class InputSystem : MonoBehaviour
 
     public float ForwadValue
     {
-        get 
+        get
         {
             return directionalInput.y;
         }
@@ -37,21 +37,43 @@ public class InputSystem : MonoBehaviour
     {
         get
         {
-           return directionalInput.x;
+            return directionalInput.x;
         }
     }
 
-	[SerializeField] [ReadOnlyField]
-	private bool isGrabbed = false;
-	public bool IsGrabbed
-	{
-		get
-		{
-			return isGrabbed;
-		}
-	}
+    [SerializeField] [ReadOnlyField]
+    private bool isGrabbing = false;
+    public bool IsGrabbing
+    {
+        get
+        {
+            return isGrabbing;
+        }
+    }
 
-	[SerializeField]
+
+    [SerializeField] [ReadOnlyField]
+    private bool isZoomingIn = false;
+    public bool IsZoomingIn
+    {
+        get 
+        {
+            return isZoomingIn;
+        }
+    }
+   
+    [SerializeField] [ReadOnlyField]
+    private bool isZoomingOut = false;
+    public bool IsZoomingOut
+    {
+        get
+        {
+            return isZoomingOut;
+        }
+    }
+
+
+    [SerializeField]
     private KeyCode forwardKey = KeyCode.W;
     [SerializeField]
     private KeyCode backwardKey = KeyCode.S;
@@ -68,11 +90,14 @@ public class InputSystem : MonoBehaviour
     private string joystickVertical = "Vertical";
     [SerializeField]
     private string grabButton = "XboxA";
-
+    [SerializeField]
+    private string zoomInButton = "LeftBumper";
+    [SerializeField]
+    private string zoomOutButton = "RightBumper";
 
     public InputMode inputMode;
 
-
+    //25 50
     void Start()
     {
         if (WoofInput == null)
@@ -84,7 +109,7 @@ public class InputSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || Input.GetButton(grabButton))
+        if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || Input.GetButton(grabButton) || Input.GetButton(zoomInButton) || Input.GetButton(zoomOutButton))
         {
             inputMode = InputMode.Controller;
         }
@@ -109,7 +134,10 @@ public class InputSystem : MonoBehaviour
     private void ControllerInputLoop()
     {
         directionalInput = new Vector2(Input.GetAxis(joystickHorizontal), Input.GetAxis(joystickVertical)).normalized;
-        isGrabbed = Input.GetButton(grabButton);
+        isGrabbing = Input.GetButton(grabButton);
+
+        isZoomingIn = Input.GetButton(zoomInButton);
+        isZoomingOut = Input.GetButton(zoomOutButton);
     }
 
     private void KeyboardInputLoop()
@@ -133,7 +161,7 @@ public class InputSystem : MonoBehaviour
             RawInput.x -= 1.0f;
         }
      
-        isGrabbed = Input.GetKey(grabKey);
+        isGrabbing = Input.GetKey(grabKey);
 
 
         directionalInput = RawInput.normalized;
