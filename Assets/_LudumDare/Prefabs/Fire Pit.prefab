@@ -109,6 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfSticksNeeded: 3
   onFire: 0
+  cookedMeat: {fileID: 1730326917924817019, guid: a163d223caaaf714fb11747e110e56c2,
+    type: 3}
 --- !u!1 &3235690705875228562
 GameObject:
   m_ObjectHideFlags: 0
