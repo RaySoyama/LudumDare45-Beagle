@@ -36,17 +36,22 @@ public class FirePitController : MonoBehaviour
     private Collider outerFireCollider;
 
 
+    public bool lightOnFire;
+
+
     Coroutine fireCoroutine;
 	private void Start()
 	{
         fire.SetActive(false);
         innerFireCollider.SetActive(false);
-	}
+        lightOnFire = false;
+
+    }
 
 
 	void FixedUpdate()
     {
-		if (sticks.Count >= numberOfSticksNeeded )
+		if (sticks.Count >= numberOfSticksNeeded && lightOnFire == true)
 		{
             //Light the fire
             if (fireCoroutine == null)

@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_LudumDare/_Scenes/Rays Scenes/RayTitleScene.unity
+    guid: 6d3fb8a3da8a89c44a137c0f883b3ff0
+  - enabled: 1
+    path: Assets/_LudumDare/_Scenes/Rays Scenes/RayOpenningScene.unity
+    guid: c0b41e3ce825f4d4dacd8625d6e86d4a
+  - enabled: 1
+    path: Assets/_LudumDare/_Scenes/Rays Scenes/RayDevScene.unity
+    guid: 1e209477575ede54f916764ad14e67fc
   m_configObjects: {}
