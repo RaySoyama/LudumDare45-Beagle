@@ -18,21 +18,23 @@ public class FirePitController : MonoBehaviour
 
 	public GameObject cookedMeat;
 
-    private Collider collider;
+    private Collider fireCollider;
 	private void Start()
 	{
-        collider = GetComponent<Collider>();
+        fireCollider = GetComponent<Collider>();
 	}
+
+    private float fireTimer;
 
 	void FixedUpdate()
     {
-		if (sticks.Count >= numberOfSticksNeeded)
+		if (onFire == false && sticks.Count >= numberOfSticksNeeded )
 		{
 			//Light the fire
 			onFire = true;
 			fire.SetActive(true);
 		}
-		else
+		else if (onFire == false)
 		{
 			//unlight the fire
 			onFire = false;
@@ -41,7 +43,8 @@ public class FirePitController : MonoBehaviour
 
 		if (onFire)
 		{
-            collider.isTrigger = false;
+            StartFire();
+    
 
 
             foreach (GameObject chunk in meatChunks)
@@ -104,4 +107,25 @@ public class FirePitController : MonoBehaviour
 			}
 		}
 	}
+
+    private void StartFire()
+    {
+        //fireCollider.isTrigger = false;
+        fireTimer += Time.deltaTime;
+
+        if (fireTimer >= 1)
+        {
+            foreach (GameObject stook in sticks)
+            {
+                stook.GetComponent<ObjectData>().isPickupable = false;
+                stook.GetComponent<Rigidbody>().isKinematic = true;
+            }
+
+        }
+        if (fireTimer >= 1.5)
+        { 
+            fireCollider.isTrigger = false;
+        }
+    }
+
 }

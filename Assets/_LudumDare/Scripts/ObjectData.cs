@@ -35,6 +35,7 @@ public class ObjectData : MonoBehaviour
 
     public bool isCurrentlyInMouth = false;
 
+    public bool isPickupable = true;
 
     public List<Transform> grabPoints;
 }

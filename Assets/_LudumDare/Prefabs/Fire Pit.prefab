@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3235690705267003002}
-  - component: {fileID: 3235690705267002999}
+  - component: {fileID: 2022458842148661239}
   - component: {fileID: 3235690705267002998}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fire Pit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,20 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &3235690705267002999
-CapsuleCollider:
+--- !u!135 &2022458842148661239
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3235690705267002997}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3235690705267002998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,8 +59,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edec85dc282ec8d46ba8757514a3a9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfSticksNeeded: 3
+  sticks: []
+  meatChunks: []
+  numberOfSticksNeeded: 5
   onFire: 0
+  fire: {fileID: 4428184597618254386}
   cookedMeat: {fileID: 1730326917924817019, guid: a163d223caaaf714fb11747e110e56c2,
     type: 3}
 --- !u!1 &4428184597618254386
@@ -75,7 +77,7 @@ GameObject:
   - component: {fileID: 9051320674594958373}
   - component: {fileID: 584126020162501958}
   - component: {fileID: 2621086048469874677}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4824,11 +4826,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3235690705267003002}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 3485facdef4dff44c812528fd95d39bf,
-        type: 3}
-      propertyPath: m_Name
-      value: Fire Pit
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3485facdef4dff44c812528fd95d39bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4884,20 +4881,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 3485facdef4dff44c812528fd95d39bf,
+    - target: {fileID: -927199367670048503, guid: 3485facdef4dff44c812528fd95d39bf,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
+      propertyPath: m_Name
+      value: Fire Pit
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 3485facdef4dff44c812528fd95d39bf,
+    - target: {fileID: -927199367670048503, guid: 3485facdef4dff44c812528fd95d39bf,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 3485facdef4dff44c812528fd95d39bf,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 3485facdef4dff44c812528fd95d39bf,
         type: 3}

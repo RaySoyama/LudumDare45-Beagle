@@ -133,6 +133,7 @@ MonoBehaviour:
   type: 2
   holdInMouth: 1
   isCurrentlyInMouth: 0
+  isPickupable: 1
   grabPoints:
   - {fileID: 760804356}
   - {fileID: 920708383}

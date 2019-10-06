@@ -103,14 +103,19 @@ public class PickupController : MonoBehaviour
             }
 
             pickupIndicator.SetActive(false);
-        }
 
+
+            if (objectInMouth.GetComponent<ObjectData>().isPickupable == false)
+            {
+                DropObjectInMouth();
+            }
+        }
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pickup") == true && avaliblePickups.Contains(other.gameObject) != true)
+        if (other.CompareTag("Pickup") == true && avaliblePickups.Contains(other.gameObject) != true && other.GetComponent<ObjectData>().isPickupable == true)
         {
             avaliblePickups.Add(other.gameObject);
             avaliblePickupData.Add(other.GetComponent<ObjectData>());
