@@ -58,11 +58,11 @@ public class WoofMovement : MonoBehaviour
 					heldObject = selected;
 				}
 			}
-			else
-			{
-				heldObject = null;
-				//drop object
-			}
+		}
+		else
+		{
+			heldObject = null;
+			//drop object
 		}
 
 		//If we have a held object move it to our mouth
@@ -89,9 +89,5 @@ public class WoofMovement : MonoBehaviour
             CameraController.CamController.ExitCave();
         }
     }
-
-
-
-
 
 }
