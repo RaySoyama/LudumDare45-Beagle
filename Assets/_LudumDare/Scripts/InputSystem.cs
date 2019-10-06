@@ -62,7 +62,10 @@ public class InputSystem : MonoBehaviour
 	[SerializeField]
 	private KeyCode grabKey = KeyCode.E;
 
-    //private 
+    [SerializeField]
+    private string joystickHorizontal = "Horizontal";
+    [SerializeField]
+    private string joystickVertical = "Vertical";
 
 
 
@@ -80,11 +83,10 @@ public class InputSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis("Horizontal") != 0.0f)
+        if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f)
         {
-            Debug.Log("QUACK");
+            inputMode = InputMode.Controller;
         }
-
 
         if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(rightwardKey) || Input.GetKey(leftwardKey) || Input.GetKey(grabKey)) //Input.GetKey() ||
         {
@@ -104,9 +106,8 @@ public class InputSystem : MonoBehaviour
     }
 
     private void ControllerInputLoop()
-    { 
-        
-
+    {
+        directionalInput = new Vector2(Input.GetAxis(joystickHorizontal), Input.GetAxis(joystickVertical)).normalized;
     }
 
     private void KeyboardInputLoop()
