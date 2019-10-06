@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DevCaveWallMat
-  m_Shader: {fileID: 4800000, guid: 894edba76e0d46e43b18af58e847d78c, type: 3}
-  m_ShaderKeywords: 
+  m_Name: Grass
+  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.3018868, g: 0.26315415, b: 0.22926308, a: 1}
+    - _Color: {r: 0.4627451, g: 0.6431373, b: 0.49019608, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
