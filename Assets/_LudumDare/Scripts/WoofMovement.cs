@@ -46,7 +46,7 @@ public class WoofMovement : MonoBehaviour
             gameObject.transform.Translate(new Vector3(InputSystem.WoofInput.DirectionalInput.x,0, InputSystem.WoofInput.DirectionalInput.y) * Speed * Time.deltaTime);
         }
 
-		if (InputSystem.WoofInput.grab)
+		if (InputSystem.WoofInput.IsGrabbed)
 		{
 			if (!heldObject)
 			{

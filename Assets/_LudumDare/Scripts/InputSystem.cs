@@ -42,12 +42,12 @@ public class InputSystem : MonoBehaviour
     }
 
 	[SerializeField] [ReadOnlyField]
-	private bool grabed = false;
-	public bool grab
+	private bool isGrabbed = false;
+	public bool IsGrabbed
 	{
 		get
 		{
-			return grabed;
+			return isGrabbed;
 		}
 	}
 
@@ -66,10 +66,11 @@ public class InputSystem : MonoBehaviour
     private string joystickHorizontal = "Horizontal";
     [SerializeField]
     private string joystickVertical = "Vertical";
+    [SerializeField]
+    private string grabButton = "XboxA";
 
 
-
-	public InputMode inputMode;
+    public InputMode inputMode;
 
 
     void Start()
@@ -83,7 +84,7 @@ public class InputSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f)
+        if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || Input.GetButton(grabButton))
         {
             inputMode = InputMode.Controller;
         }
@@ -108,6 +109,7 @@ public class InputSystem : MonoBehaviour
     private void ControllerInputLoop()
     {
         directionalInput = new Vector2(Input.GetAxis(joystickHorizontal), Input.GetAxis(joystickVertical)).normalized;
+        isGrabbed = Input.GetButton(grabButton);
     }
 
     private void KeyboardInputLoop()
@@ -130,16 +132,10 @@ public class InputSystem : MonoBehaviour
         {
             RawInput.x -= 1.0f;
         }
-		if (Input.GetKeyDown(grabKey))
-		{
-			grabed = true;
-		}
-		else
-		{
-			grabed = false;
-		}
+     
+        isGrabbed = Input.GetKey(grabKey);
+
 
         directionalInput = RawInput.normalized;
     }
-
 }
