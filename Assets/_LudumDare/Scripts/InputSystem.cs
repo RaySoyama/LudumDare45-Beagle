@@ -80,6 +80,12 @@ public class InputSystem : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetAxis("Horizontal") != 0.0f)
+        {
+            Debug.Log("QUACK");
+        }
+
+
         if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(rightwardKey) || Input.GetKey(leftwardKey) || Input.GetKey(grabKey)) //Input.GetKey() ||
         {
             inputMode = InputMode.Keyboard;
