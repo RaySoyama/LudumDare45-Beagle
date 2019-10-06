@@ -7,8 +7,7 @@ public class IndicatorController : MonoBehaviour
 
 	private GameObject selected;
 
-	[SerializeField]
-	public float distanceThreshold;
+	private float distanceThreshold;
 
 	private Transform cameraTransform;
 	private Transform dog;
@@ -20,8 +19,11 @@ public class IndicatorController : MonoBehaviour
     {
 		cameraTransform = FindObjectsOfType<Camera>()[0].transform;
 		dog = transform.parent.transform;
-		
-	}
+
+        //distanceThreshold
+
+
+    }
 
     // Update is called once per frame
     void Update()
