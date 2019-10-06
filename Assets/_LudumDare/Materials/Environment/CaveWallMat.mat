@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Raw Meat
-  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: CaveWallMat
+  m_Shader: {fileID: 4800000, guid: 894edba76e0d46e43b18af58e847d78c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.990566, g: 0.2569865, b: 0.27346548, a: 1}
+    - _Color: {r: 0.3018868, g: 0.26315415, b: 0.22926308, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
