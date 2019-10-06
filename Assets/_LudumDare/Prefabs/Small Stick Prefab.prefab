@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 391206559369701416}
   m_Layer: 0
   m_Name: Small Stick Prefab
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270c7639746ea79469d58483b0bc2620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   grabPoints:
   - {fileID: 998733224}
 --- !u!54 &391206559369701423
@@ -94,7 +95,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &391206559369701416
 CapsuleCollider:
   m_ObjectHideFlags: 0
