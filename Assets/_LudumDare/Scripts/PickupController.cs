@@ -136,16 +136,16 @@ public class PickupController : MonoBehaviour
             objectInMouth.gameObject.GetComponent<Collider>().isTrigger = true;
 
             objectInMouth.transform.parent = JawEnd.transform;
-            objectInMouth.transform.forward = -objectInMouthGrabPoint.transform.right;
-            //objectInMouth.transform.eulerAngles = -JawEnd.transform.right + objectInMouthGrabPoint.transform.localEulerAngles;
+            objectInMouth.transform.localPosition = -objectInMouthGrabPoint.transform.localPosition;
+            objectInMouth.transform.localEulerAngles = new Vector3(0,90,0) + objectInMouthGrabPoint.transform.localEulerAngles;
         }
 
     }
 
     private void HoldObjectInMouth()
     {
+        //objectInMouth.transform.localPosition = objectInMouthGrabPoint.transform.localPosition;
         //objectInMouth.transform.position = JawEnd.transform.position - objectInMouthGrabPoint.transform.localPosition;
-        //objectInMouth.transform.eulerAngles = -JawEnd.transform.right + objectInMouthGrabPoint.transform.localEulerAngles;
     }
 
     private void DropObjectInMouth()
