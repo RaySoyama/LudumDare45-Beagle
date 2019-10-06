@@ -9168,6 +9168,8 @@ MonoBehaviour:
   rightwardKey: 100
   leftwardKey: 97
   grabKey: 101
+  joystickHorizontal: Horizontal
+  joystickVertical: Vertical
   inputMode: 0
 --- !u!1 &1482421316
 GameObject:
