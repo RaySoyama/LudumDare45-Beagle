@@ -9515,9 +9515,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3235690705267003002}
-  - component: {fileID: 2022458842148661239}
+  - component: {fileID: 4335672151164771078}
   - component: {fileID: 3235690705267002998}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Fire Pit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9540,18 +9540,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2022458842148661239
-SphereCollider:
+--- !u!136 &4335672151164771078
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3235690705267002997}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.75
+  m_Height: 5
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3235690705267002998
 MonoBehaviour:
@@ -9567,11 +9568,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sticks: []
   meatChunks: []
-  numberOfSticksNeeded: 3
+  numberOfSticksNeeded: 5
   onFire: 0
   fire: {fileID: 7092672980568064523}
-  cookedMeat: {fileID: 1730326917924817019, guid: a163d223caaaf714fb11747e110e56c2,
-    type: 3}
+  cookedMeatMat: {fileID: 0}
 --- !u!1 &4428184597618254386
 GameObject:
   m_ObjectHideFlags: 0
@@ -14351,7 +14351,7 @@ Transform:
   m_GameObject: {fileID: 7092672980568064523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.077, y: 0, z: 0.031}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 3435441734280264123}
   - {fileID: 9051320674594958373}
@@ -14439,6 +14439,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3485facdef4dff44c812528fd95d39bf,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire Pit
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 3485facdef4dff44c812528fd95d39bf,
         type: 3}

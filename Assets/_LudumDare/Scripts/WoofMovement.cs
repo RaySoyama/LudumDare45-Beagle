@@ -15,8 +15,11 @@ public class WoofMovement : MonoBehaviour
 	private Transform dogModel;
 	public Transform mouthPoint;
 
-	private GameObject heldObject = null;
+    [SerializeField]
+    private Animator anim;
 
+    [SerializeField]
+    private float headDownSpeed;
 
 	void Start()
     {
@@ -44,6 +47,15 @@ public class WoofMovement : MonoBehaviour
             gameObject.transform.Translate(new Vector3(InputSystem.WoofInput.DirectionalInput.x,0, InputSystem.WoofInput.DirectionalInput.y) * Speed * Time.deltaTime);
         }
 
+        if (InputSystem.WoofInput.IsDucking == true)
+        {
+            anim.SetLayerWeight(2,InputSystem.WoofInput.DuckValue);
+            //anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 1, headDownSpeed * Time.deltaTime));
+        }
+        //else 
+        //{
+        //    //anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 0, headDownSpeed * Time.deltaTime));
+        //}
     }
 
     //test

@@ -16,7 +16,8 @@ public class FirePitController : MonoBehaviour
 	
     public GameObject fire;
 
-	public GameObject cookedMeat;
+    [SerializeField]
+    private Material cookedMeatMat;
 
     private Collider fireCollider;
 	private void Start()
@@ -32,7 +33,6 @@ public class FirePitController : MonoBehaviour
 		{
 			//Light the fire
 			onFire = true;
-			fire.SetActive(true);
 		}
 		else if (onFire == false)
 		{
@@ -46,12 +46,10 @@ public class FirePitController : MonoBehaviour
             StartFire();
     
 
-
             foreach (GameObject chunk in meatChunks)
 			{
-				GameObject newChunk = Instantiate(cookedMeat, transform.position, Quaternion.identity);
-				newChunk.GetComponent<Rigidbody>().AddForce(new Vector3(0.1f, 1f, 0.1f));
-				Destroy(chunk);
+
+
 			}
 
 			meatChunks = new List<GameObject>();
@@ -113,7 +111,7 @@ public class FirePitController : MonoBehaviour
         //fireCollider.isTrigger = false;
         fireTimer += Time.deltaTime;
 
-        if (fireTimer >= 1)
+        if (fireTimer >= 0.5f)
         {
             foreach (GameObject stook in sticks)
             {
@@ -123,7 +121,8 @@ public class FirePitController : MonoBehaviour
 
         }
         if (fireTimer >= 1.5)
-        { 
+        {
+            fire.SetActive(true);
             fireCollider.isTrigger = false;
         }
     }

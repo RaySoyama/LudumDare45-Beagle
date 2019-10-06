@@ -73,6 +73,30 @@ public class InputSystem : MonoBehaviour
     }
 
 
+    [SerializeField] [ReadOnlyField]
+    private bool isDucking = false;
+
+    public bool IsDucking
+    {
+        get
+        {
+            return isDucking;
+        }
+
+    }
+
+    [SerializeField] [ReadOnlyField]
+    private float duckValue;
+    public float DuckValue
+    {
+
+        get
+        {
+            return duckValue;
+        }
+    }
+
+
     [SerializeField]
     private KeyCode forwardKey = KeyCode.W;
     [SerializeField]
@@ -88,12 +112,16 @@ public class InputSystem : MonoBehaviour
     [SerializeField]
     private KeyCode zoomOutKey = KeyCode.LeftControl;
 
+
+
     [SerializeField]
     private string joystickHorizontal = "Horizontal";
     [SerializeField]
     private string joystickVertical = "Vertical";
     [SerializeField]
     private string grabButton = "XboxA";
+    [SerializeField]
+    private string duckButton = "LeftTrigger";
     [SerializeField]
     private string zoomInButton = "LeftBumper";
     [SerializeField]
@@ -114,7 +142,7 @@ public class InputSystem : MonoBehaviour
     void Update()
     {
         if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || 
-            Input.GetButton(grabButton) || Input.GetButton(zoomInButton) || Input.GetButton(zoomOutButton))
+            Input.GetButton(grabButton) || Input.GetAxis(duckButton) != 0.0f || Input.GetButton(zoomInButton) || Input.GetButton(zoomOutButton))
         {
             inputMode = InputMode.Controller;
         }
@@ -140,10 +168,23 @@ public class InputSystem : MonoBehaviour
     private void ControllerInputLoop()
     {
         directionalInput = new Vector2(Input.GetAxis(joystickHorizontal), Input.GetAxis(joystickVertical)).normalized;
+        
         isGrabbing = Input.GetButton(grabButton);
+        
+        duckValue = Input.GetAxis(duckButton);
+
+        if (duckValue >= 0.1f)
+        {
+            isDucking = true;
+        }
+        else 
+        {
+            isDucking = false;        
+        }
 
         isZoomingIn = Input.GetButton(zoomInButton);
         isZoomingOut = Input.GetButton(zoomOutButton);
+
     }
 
     private void KeyboardInputLoop()

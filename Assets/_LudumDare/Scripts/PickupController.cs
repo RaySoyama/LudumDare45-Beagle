@@ -46,6 +46,7 @@ public class PickupController : MonoBehaviour
 
             foreach (ObjectData pickup in avaliblePickupData)
             {
+
                 foreach (Transform grabPoint in pickup.grabPoints)
                 {
                     float distanceDogToPoint = Vector3.Distance(transform.position, grabPoint.position);
@@ -84,11 +85,6 @@ public class PickupController : MonoBehaviour
             {
                 DropObjectInMouth();
             }
-
-
-
-
-
         }
         else 
         { 
@@ -133,7 +129,7 @@ public class PickupController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Pickup") == true && other.gameObject == lastObjectInMouth && avaliblePickups.Contains(other.gameObject) != true)
+        if (other.CompareTag("Pickup") == true && other.gameObject == lastObjectInMouth && avaliblePickups.Contains(other.gameObject) != true && other.GetComponent<ObjectData>().isPickupable == true)
         {
             avaliblePickups.Add(other.gameObject);
             avaliblePickupData.Add(other.GetComponent<ObjectData>());
@@ -171,9 +167,14 @@ public class PickupController : MonoBehaviour
         objectInMouth.GetComponent<ObjectData>().isCurrentlyInMouth = false;
 
         lastObjectInMouth = objectInMouth;
+        avaliblePickups.Remove(objectInMouth.gameObject);
+        avaliblePickupData.Remove(objectInMouth.GetComponent<ObjectData>());
+
         objectInMouth.transform.parent = null;
         objectInMouth = null;
         objectInMouthGrabPoint = null;
+
+
     }
 
 }
