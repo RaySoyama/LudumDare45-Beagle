@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tail
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Doge_Mesh2
+    m_Weight: 1
+  - m_Path: Joints
+    m_Weight: 1
+  - m_Path: Joints/Root
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FL_Hip
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FL_Hip/FL_Knee
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FL_Hip/FL_Knee/FL_Foot
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FL_Hip/FL_Knee/FL_Foot/FL_Toes
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FL_Hip/FL_Knee/FL_Foot/FL_Toes/FL_END
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FR_Hip
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FR_Hip/FR_Knee
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FR_Hip/FR_Knee/FR_Ankle
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FR_Hip/FR_Knee/FR_Ankle/FR_Toes
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/FR_Hip/FR_Knee/FR_Ankle/FR_Toes/FR_END
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/Jaw
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/Jaw/Jaw_End
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/Jaw/Tounge_1
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/Jaw/Tounge_1/Tounge_2
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/Jaw/Tounge_1/Tounge_2/Tounge_END
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/L_Ear_1
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/L_Ear_1/L_Ear_2
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/L_Ear_1/L_Ear_2/L_Ear_3
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/L_Ear_1/L_Ear_2/L_Ear_3/L_Ear_END
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/L_Ear_4
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/L_Ear_4/L_Ear_2 1
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/L_Ear_4/L_Ear_2 1/L_Ear_3
+      1
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/L_Ear_4/L_Ear_2 1/L_Ear_3
+      1/L_Ear_END 1
+    m_Weight: 1
+  - m_Path: Joints/Root/Belly/Chest/Neck_1/Neck_2/Neck_3/Head/Nose_END
+    m_Weight: 1
+  - m_Path: Joints/Root/BL_Hip
+    m_Weight: 1
+  - m_Path: Joints/Root/BL_Hip/BL_Knee
+    m_Weight: 1
+  - m_Path: Joints/Root/BL_Hip/BL_Knee/BL_Ankle
+    m_Weight: 1
+  - m_Path: Joints/Root/BL_Hip/BL_Knee/BL_Ankle/BL_Foot
+    m_Weight: 1
+  - m_Path: Joints/Root/BL_Hip/BL_Knee/BL_Ankle/BL_Foot/BL_Toes
+    m_Weight: 1
+  - m_Path: Joints/Root/BL_Hip/BL_Knee/BL_Ankle/BL_Foot/BL_Toes/BL_END
+    m_Weight: 1
+  - m_Path: Joints/Root/BR_Hip
+    m_Weight: 1
+  - m_Path: Joints/Root/BR_Hip/BR_Knee
+    m_Weight: 1
+  - m_Path: Joints/Root/BR_Hip/BR_Knee/BR_Ankle
+    m_Weight: 1
+  - m_Path: Joints/Root/BR_Hip/BR_Knee/BR_Ankle/BR_Foot
+    m_Weight: 1
+  - m_Path: Joints/Root/BR_Hip/BR_Knee/BR_Ankle/BR_Foot/BR_Toes
+    m_Weight: 1
+  - m_Path: Joints/Root/BR_Hip/BR_Knee/BR_Ankle/BR_Foot/BR_Toes/BR_END
+    m_Weight: 1
+  - m_Path: Joints/Root/Tail_1
+    m_Weight: 0
+  - m_Path: Joints/Root/Tail_1/Tail_2
+    m_Weight: 0
+  - m_Path: Joints/Root/Tail_1/Tail_2/Tail_3
+    m_Weight: 0
+  - m_Path: Joints/Root/Tail_1/Tail_2/Tail_3/Tail_4
+    m_Weight: 0
+  - m_Path: Joints/Root/Tail_1/Tail_2/Tail_3/Tail_4/Tail_END
+    m_Weight: 0
