@@ -18,8 +18,10 @@ public class FirePitController : MonoBehaviour
 
 	public GameObject cookedMeat;
 
+    private Collider collider;
 	private void Start()
 	{
+        collider = GetComponent<Collider>();
 	}
 
 	void FixedUpdate()
@@ -39,7 +41,10 @@ public class FirePitController : MonoBehaviour
 
 		if (onFire)
 		{
-			foreach (GameObject chunk in meatChunks)
+            collider.isTrigger = false;
+
+
+            foreach (GameObject chunk in meatChunks)
 			{
 				GameObject newChunk = Instantiate(cookedMeat, transform.position, Quaternion.identity);
 				newChunk.GetComponent<Rigidbody>().AddForce(new Vector3(0.1f, 1f, 0.1f));
