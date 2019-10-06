@@ -62,6 +62,10 @@ public class InputSystem : MonoBehaviour
 	[SerializeField]
 	private KeyCode grabKey = KeyCode.E;
 
+    //private 
+
+
+
 	public InputMode inputMode;
 
 
