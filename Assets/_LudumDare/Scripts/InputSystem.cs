@@ -60,7 +60,7 @@ public class InputSystem : MonoBehaviour
     [SerializeField]
     private KeyCode leftwardKey = KeyCode.A;
 	[SerializeField]
-	private KeyCode grabKey = KeyCode.E;
+	private KeyCode grabKey = KeyCode.Space;
 
     [SerializeField]
     private string joystickHorizontal = "Horizontal";

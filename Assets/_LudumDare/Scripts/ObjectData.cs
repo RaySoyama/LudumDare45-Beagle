@@ -8,6 +8,8 @@ public class ObjectData : MonoBehaviour
     {
         SmallStick,
         BigStick,
+		MeatChunk,
+		CookedMeat
     }
 
     [SerializeField]
