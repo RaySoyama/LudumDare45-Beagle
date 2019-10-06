@@ -48,24 +48,21 @@ public class WoofMovement : MonoBehaviour
 
 		if (InputSystem.WoofInput.IsGrabbed)
 		{
-			Debug.Log("grab button");
 			if (!heldObject)
 			{
 				GameObject selected = indicatorScript.GetSelected();
 
 				if (selected)
 				{
-					Debug.Log("grabbing " + selected.name);
 					//move selected object to mouth snap point
 					heldObject = selected;
 				}
 			}
-			else
-			{
-				Debug.Log("dropping " + heldObject);
-				heldObject = null;
-				//drop object
-			}
+		}
+		else
+		{
+			heldObject = null;
+			//drop object
 		}
 
 		//If we have a held object move it to our mouth
@@ -79,8 +76,6 @@ public class WoofMovement : MonoBehaviour
     //test
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("yeet");
-
         if (other.CompareTag("AreaTrigger") == true)
         {
             CameraController.CamController.EnterCave();
@@ -89,16 +84,10 @@ public class WoofMovement : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("yeet");
-
         if (other.CompareTag("AreaTrigger") == true)
         {
             CameraController.CamController.ExitCave();
         }
     }
-
-
-
-
 
 }
