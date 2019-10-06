@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class FirePitController : MonoBehaviour
 {
+    [SerializeField][ReadOnlyField]
 	private List<GameObject> sticks = new List<GameObject>();
+    
+    [SerializeField][ReadOnlyField]
 	private List<GameObject> meatChunks = new List<GameObject>();
 	public int numberOfSticksNeeded = 3;
+
 	[ReadOnlyField]
 	public bool onFire = false;
-	GameObject fire;
+	
+    public GameObject fire;
 
 	public GameObject cookedMeat;
 
 	private void Start()
 	{
-		fire = transform.GetChild(0).gameObject;
 	}
 
 	void FixedUpdate()
@@ -53,6 +57,7 @@ public class FirePitController : MonoBehaviour
 		if (other.gameObject.tag == "Pickup")
 		{
 			ObjectData obj = other.gameObject.GetComponent<ObjectData>();
+
 			if (obj.Type == ObjectData.ObjectType.SmallStick || obj.Type == ObjectData.ObjectType.BigStick)
 			{
 				if (!sticks.Contains(other.gameObject))

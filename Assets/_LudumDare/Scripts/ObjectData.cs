@@ -33,6 +33,8 @@ public class ObjectData : MonoBehaviour
         }
     }
 
+    public bool isCurrentlyInMouth = false;
+
 
     public List<Transform> grabPoints;
 }

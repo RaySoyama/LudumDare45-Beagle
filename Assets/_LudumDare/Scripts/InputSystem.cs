@@ -83,6 +83,10 @@ public class InputSystem : MonoBehaviour
     private KeyCode leftwardKey = KeyCode.A;
 	[SerializeField]
 	private KeyCode grabKey = KeyCode.Space;
+    [SerializeField]
+    private KeyCode zoomInKey = KeyCode.LeftShift;
+    [SerializeField]
+    private KeyCode zoomOutKey = KeyCode.LeftControl;
 
     [SerializeField]
     private string joystickHorizontal = "Horizontal";
@@ -109,12 +113,14 @@ public class InputSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || Input.GetButton(grabButton) || Input.GetButton(zoomInButton) || Input.GetButton(zoomOutButton))
+        if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || 
+            Input.GetButton(grabButton) || Input.GetButton(zoomInButton) || Input.GetButton(zoomOutButton))
         {
             inputMode = InputMode.Controller;
         }
 
-        if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(rightwardKey) || Input.GetKey(leftwardKey) || Input.GetKey(grabKey)) //Input.GetKey() ||
+        if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(rightwardKey) ||
+            Input.GetKey(leftwardKey) || Input.GetKey(grabKey)|| Input.GetKey(zoomInKey) || Input.GetKey(zoomOutKey)) //||Input.GetKey()
         {
             inputMode = InputMode.Keyboard;
         }
@@ -160,8 +166,12 @@ public class InputSystem : MonoBehaviour
         {
             RawInput.x -= 1.0f;
         }
+
      
         isGrabbing = Input.GetKey(grabKey);
+
+        isZoomingIn = Input.GetKey(zoomInKey);
+        isZoomingOut = Input.GetKey(zoomOutKey);
 
 
         directionalInput = RawInput.normalized;

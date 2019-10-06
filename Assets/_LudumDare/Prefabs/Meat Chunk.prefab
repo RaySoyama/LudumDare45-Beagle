@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &760804355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 760804356}
+  m_Layer: 8
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &760804356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760804355}
+  m_LocalRotation: {x: 0.6997318, y: 0, z: 0, w: 0.71440566}
+  m_LocalPosition: {x: 0.048, y: 0.171, z: -0.049}
+  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000004}
+  m_Children: []
+  m_Father: {fileID: 8891686231173422344}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 88.811, y: 0, z: 0}
+--- !u!1 &920708382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920708383}
+  m_Layer: 8
+  m_Name: GrabPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920708383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920708382}
+  m_LocalRotation: {x: 0.6997381, y: 0, z: 0, w: 0.7143995}
+  m_LocalPosition: {x: 0.048, y: 0.1556, z: -0.0558}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8891686231173422344}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 88.812, y: 0, z: 0}
 --- !u!1 &1730326917924817019
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +73,7 @@ GameObject:
   - component: {fileID: 7081088173064220767}
   - component: {fileID: 4966809661053309379}
   - component: {fileID: -3119133444224283993}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Meat Chunk
   m_TagString: Pickup
   m_Icon: {fileID: 0}
@@ -32,6 +92,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6785682059791179700}
+  - {fileID: 760804356}
+  - {fileID: 920708383}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54,8 +116,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.2, z: 0.7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.30942798, y: 0.07985672, z: 0.40447533}
+  m_Center: {x: -0.0069047213, y: 0.0006905198, z: 0.0027619004}
 --- !u!114 &4966809661053309379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,8 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  holdInMouth: 0
-  grabPoints: []
+  holdInMouth: 1
+  isCurrentlyInMouth: 0
+  grabPoints:
+  - {fileID: 760804356}
+  - {fileID: 920708383}
 --- !u!54 &-3119133444224283993
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98,6 +163,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 79f47cd4aba28b0479f34775666f3903,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 79f47cd4aba28b0479f34775666f3903,
         type: 3}

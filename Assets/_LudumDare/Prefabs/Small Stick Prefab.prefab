@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 998733224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 218326508256198843}
   - component: {fileID: 391206559369701423}
   - component: {fileID: 7208326263050553750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small Stick Prefab
   m_TagString: Pickup
   m_Icon: {fileID: 0}
@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   holdInMouth: 1
+  isCurrentlyInMouth: 0
   grabPoints:
   - {fileID: 998733224}
 --- !u!54 &391206559369701423
@@ -121,6 +122,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6e5523657a0aef04bbb90973e4cafa61,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6e5523657a0aef04bbb90973e4cafa61,
         type: 3}
