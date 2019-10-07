@@ -45,7 +45,8 @@ public class WoofMovement : MonoBehaviour
     {
         if (InputSystem.WoofInput.IsEmote == true)
         {
-            anim.SetBool("isSitting",true);        
+            anim.SetBool("isSitting",true);
+            anim.SetBool("isWalking", false);
         }
         else if (cameraForward == true && InputSystem.WoofInput.DirectionalInput.normalized != Vector2.zero)
         {
@@ -95,7 +96,6 @@ public class WoofMovement : MonoBehaviour
 
         if (InputSystem.WoofInput.IsBark == true)
         {
-            anim.SetLayerWeight(3,1);
             anim.SetTrigger("Bark");
         }
 
