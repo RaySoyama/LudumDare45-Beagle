@@ -4905,12 +4905,19 @@ MonoBehaviour:
   manAnim: {fileID: 5768611570708355431}
   dogAnim: {fileID: 0}
   TutorialIcons: {fileID: 0}
+  pickupCont: {fileID: 0}
   movementIcons:
     ControllerIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
     KeyboardIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
   sitIcons:
     ControllerIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
     KeyboardIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
+  barkIcons:
+    ControllerIcon: {fileID: 0}
+    KeyboardIcon: {fileID: 0}
+  pickupIcons:
+    ControllerIcon: {fileID: 0}
+    KeyboardIcon: {fileID: 0}
   TutorialAction: 
   dogInRange: 0
 --- !u!54 &6692346784797577946
