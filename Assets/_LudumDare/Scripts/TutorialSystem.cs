@@ -284,6 +284,7 @@ public class TutorialSystem : MonoBehaviour
         {
             if (ClapCour == null)
             {
+                TutorialIcons.gameObject.SetActive(false);
                 ClapCour = StartCoroutine(ClapCoroutine(true));
             }
         }
@@ -292,7 +293,6 @@ public class TutorialSystem : MonoBehaviour
 
     private void GiveMeatUpdate()
     {
-        TutorialIcons.gameObject.SetActive(false);
         //play spawn meat anim,
 
         //drop meat

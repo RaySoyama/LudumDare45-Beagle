@@ -10,45 +10,70 @@ public class CavemanAnimProxy : MonoBehaviour
     [SerializeField]
     private GameObject StickPrefab;
     
+    [SerializeField]
+    private GameObject SteakPrefab;
+    
     [SerializeField][ReadOnlyField]
-    private GameObject SpawnedStick;
+    private GameObject SpawnedItem;
 
     [SerializeField]
     private GameObject manHandJoint;
 
     [SerializeField]
     private Transform stickSpawnPos;
+    
+    [SerializeField]
+    private Transform stickThrowPos;
 
 
 
 
     public void SpawnStick()
     {
-        SpawnedStick = Instantiate(StickPrefab, manHandJoint.transform);
-        SpawnedStick.transform.localPosition = Vector3.zero;
-        SpawnedStick.GetComponent<ObjectData>().isPickupable = false;
+        SpawnedItem = Instantiate(StickPrefab, manHandJoint.transform);
+        SpawnedItem.transform.localPosition = Vector3.zero;
+        SpawnedItem.GetComponent<ObjectData>().isPickupable = false;
+        SpawnedItem.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     public void DropStick()
     {
-        SpawnedStick.transform.parent = null;
-        SpawnedStick.transform.position = stickSpawnPos.position;
-        SpawnedStick.GetComponent<ObjectData>().isPickupable = true;
+        SpawnedItem.transform.parent = null;
+        SpawnedItem.GetComponent<Rigidbody>().isKinematic = false;
+        SpawnedItem.transform.position = stickSpawnPos.position;
+        SpawnedItem.GetComponent<ObjectData>().isPickupable = true;
     }
 
     public void PickUpStick()
     {
-        SpawnedStick.transform.parent = manHandJoint.transform;
-        SpawnedStick.transform.position = Vector3.zero;
-        SpawnedStick.GetComponent<ObjectData>().isPickupable = false;
+        SpawnedItem.GetComponent<Rigidbody>().isKinematic = true;
+        SpawnedItem.transform.parent = manHandJoint.transform;
+        SpawnedItem.transform.position = Vector3.zero;
+        SpawnedItem.GetComponent<ObjectData>().isPickupable = false;
     }
 
     public void ThrowStick()
     {
         //add force to throw
-        SpawnedStick.transform.parent = null;
-        SpawnedStick.GetComponent<ObjectData>().isPickupable = true;
+        SpawnedItem.GetComponent<Rigidbody>().isKinematic = false;
+        SpawnedItem.transform.parent = null;
+        SpawnedItem.GetComponent<ObjectData>().isPickupable = true;
+        SpawnedItem.transform.position = stickThrowPos.position;
     }
 
+    public void SpawnMeat()
+    {
+        SpawnedItem = Instantiate(SteakPrefab, manHandJoint.transform);
+        SpawnedItem.transform.localPosition = Vector3.zero;
+        SpawnedItem.GetComponent<ObjectData>().isPickupable = false;
+        SpawnedItem.GetComponent<Rigidbody>().isKinematic = true;
+    }
 
+    public void DropMeat()
+    {
+        SpawnedItem.transform.parent = null;
+        SpawnedItem.GetComponent<Rigidbody>().isKinematic = false;
+        SpawnedItem.transform.position = stickSpawnPos.position;
+        SpawnedItem.GetComponent<ObjectData>().isPickupable = true;
+    }
 }
