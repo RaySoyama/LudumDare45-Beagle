@@ -15,6 +15,22 @@ public class PickupController : MonoBehaviour
 
     public GameObject pickupIndicator;
 
+    public bool HasSomethingInMouth
+    {
+        get 
+        {
+            if (objectInMouth == null)
+            {
+                return false;
+            }
+            else
+            { 
+                return true;
+            }
+
+        }
+    }
+
     
     [SerializeField][ReadOnlyField]
     private GameObject objectInMouth;

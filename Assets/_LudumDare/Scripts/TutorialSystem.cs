@@ -22,12 +22,12 @@ public class TutorialSystem : MonoBehaviour
     [System.Serializable]
     private struct Icons
     {
-       public Sprite ControllerIcon;
-       public Sprite KeyboardIcon;
+        public Sprite ControllerIcon;
+        public Sprite KeyboardIcon;
     }
 
     private enum Tutorial
-    { 
+    {
         Idle,
         Sit,
         Bark,
@@ -45,19 +45,28 @@ public class TutorialSystem : MonoBehaviour
 
     [SerializeField]
     private Animator manAnim;
-    
+
     [SerializeField]
     private Animator dogAnim;
 
     [SerializeField]
     private Image TutorialIcons;
 
+    [SerializeField]
+    private PickupController pickupCont;
+
 
     [SerializeField]
     private Icons movementIcons;
-    
+
     [SerializeField]
     private Icons sitIcons;
+
+    [SerializeField]
+    private Icons barkIcons;
+    
+    [SerializeField]
+    private Icons pickupIcons;
 
 
 
@@ -91,10 +100,13 @@ public class TutorialSystem : MonoBehaviour
                 SitUpdate();
                 break;
             case Tutorial.Bark:
+                BarkUpdate();
                 break;
             case Tutorial.SpawnStick:
+                SpawnStickUpdate();
                 break;
             case Tutorial.PickUp:
+                PickUpUpdate();
                 break;
             case Tutorial.ThrowStick:
                 break;
@@ -150,14 +162,66 @@ public class TutorialSystem : MonoBehaviour
         {
             if (ClapCour == null)
             {
-                ClapCour = StartCoroutine(ClapCoroutine());
+                ClapCour = StartCoroutine(ClapCoroutine(true));
             }
         }
     }
 
+    private void BarkUpdate()
+    {
+        //Spawn Icon
+        if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Controller)
+        {
+            TutorialIcons.sprite = barkIcons.ControllerIcon;
+        }
+        else
+        {
+            TutorialIcons.sprite = barkIcons.KeyboardIcon;
+        }
+
+        if (InputSystem.WoofInput.IsBark == true)
+        {
+            if (ClapCour == null)
+            {
+                ClapCour = StartCoroutine(ClapCoroutine(true));
+            }
+        }
+    }
+
+    private void SpawnStickUpdate()
+    {
+        //Spawn Stick, Play Animation;
+        //wait till animation ends
+        TutorialAction.RemoveAt(0);
+    }
+
+    private void PickUpUpdate()
+    {
+        //Spawn Icon
+        if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Controller)
+        {
+            TutorialIcons.sprite = pickupIcons.ControllerIcon;
+        }
+        else
+        {
+            TutorialIcons.sprite = pickupIcons.KeyboardIcon;
+        }
+
+        if (pickupCont.HasSomethingInMouth == true)
+        {
+            if (InputSystem.WoofInput.IsBark == true)
+            {
+                if (ClapCour == null)
+                {
+                    ClapCour = StartCoroutine(ClapCoroutine(false));
+                }
+            }
+        }
 
 
-    private IEnumerator ClapCoroutine()
+    }
+
+    private IEnumerator ClapCoroutine(bool nextAction)
     {
         //set clap anim on
         manAnim.SetBool("isClapping", true);
@@ -171,7 +235,11 @@ public class TutorialSystem : MonoBehaviour
         
 
         ClapCour = null;
-        TutorialAction.RemoveAt(0);
+
+        if (nextAction == true)
+        { 
+            TutorialAction.RemoveAt(0);
+        }
     }
 
 
