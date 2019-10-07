@@ -212,6 +212,8 @@ public class TutorialSystem : MonoBehaviour
     private void SpawnStickUpdate()
     {
         //Spawn Stick, Play Animation;
+        manAnim.SetTrigger("drop");
+
         //wait till animation ends
         Debug.Log("Spawn Stick Action");
         TutorialAction.RemoveAt(0);
