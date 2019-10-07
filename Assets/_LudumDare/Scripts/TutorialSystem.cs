@@ -88,6 +88,18 @@ public class TutorialSystem : MonoBehaviour
 
 
 
+    [SerializeField]
+    private GameObject FarmTargertPos;
+
+    [SerializeField][ReadOnlyField]
+    private Vector3 StartPos;
+
+    [SerializeField]
+    private float walkSpeed;
+
+    private float nValue;
+
+
 
 
     [SerializeField] [ReadOnlyField]
@@ -112,7 +124,7 @@ public class TutorialSystem : MonoBehaviour
                                                 Tutorial.Run,Tutorial.GetStickBack,Tutorial.DestroyStick,Tutorial.GiveMeat,
                                                 Tutorial.Menu,Tutorial.WalkToFarm,Tutorial.Farm,Tutorial.WalkToFire, Tutorial.LightFire, Tutorial.End};
 
-
+        StartPos = transform.position;
     }
 
     void Update()
@@ -153,6 +165,7 @@ public class TutorialSystem : MonoBehaviour
                 MenuUpdate();
                 break;
             case Tutorial.WalkToFarm:
+                WalkToFarmUpdate();
                 break;
             case Tutorial.Farm:
                 break;
@@ -355,6 +368,8 @@ public class TutorialSystem : MonoBehaviour
 
     private void MenuUpdate()
     {
+        TutorialIcons.gameObject.SetActive(true);
+
         //Spawn Icon
         if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Controller)
         {
@@ -372,6 +387,21 @@ public class TutorialSystem : MonoBehaviour
             {
                 ClapCour = StartCoroutine(ClapCoroutine(true));
             }
+        }
+    }
+
+    private void WalkToFarmUpdate()
+    {
+        transform.LookAt(FarmTargertPos.transform.position);
+
+        nValue += Time.deltaTime * walkSpeed;
+        transform.position = Vector3.Lerp(StartPos, FarmTargertPos.transform.position, nValue);
+
+        if (nValue >= 1.0f)
+        {
+            transform.position = FarmTargertPos.transform.position;
+            nValue = 0;
+            TutorialAction.RemoveAt(0);
         }
     }
 
