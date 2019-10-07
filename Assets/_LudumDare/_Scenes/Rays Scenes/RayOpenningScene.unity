@@ -297,7 +297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f3e61543baebbc478b500d6316fe566, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1183,8 +1183,8 @@ MonoBehaviour:
   runKey: 304
   grabKeyMouseIdx: 0
   duckKeyMouseIdx: 1
-  zoomInKey: 304
-  zoomOutKey: 306
+  zoomInKey: 306
+  zoomOutKey: 304
   emoteKey: 101
   barkKey: 32
   menuKey: 27
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   zoomInButton: LeftBumper
   zoomOutButton: RightBumper
   emoteButton: XboxX
-  barkButton: RightTrigger
+  barkButton: XboxB
   menuButton: Start
   inputMode: 0
 --- !u!1 &1579687546

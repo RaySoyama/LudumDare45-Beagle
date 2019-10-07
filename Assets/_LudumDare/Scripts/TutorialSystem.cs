@@ -335,6 +335,11 @@ public class TutorialSystem : MonoBehaviour
     }
 
 
+    public void DropSteak()
+    {
+        Debug.Log("Stick Droped my dude");
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
