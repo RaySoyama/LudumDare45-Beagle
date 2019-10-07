@@ -33,9 +33,9 @@ public class TutorialSystem : MonoBehaviour
         Bark,
         SpawnStick,
         PickUp,
+        GetStickBack,
         ThrowStick,
         Run,
-        ReturnStick,
         GiveMeat,
         End
     }
@@ -53,6 +53,12 @@ public class TutorialSystem : MonoBehaviour
     private Image TutorialIcons;
 
     [SerializeField]
+    private Image WalkIcons;
+
+    [SerializeField]
+    private GameObject TutorialBoundries;
+
+    [SerializeField]
     private PickupController pickupCont;
 
 
@@ -64,9 +70,12 @@ public class TutorialSystem : MonoBehaviour
 
     [SerializeField]
     private Icons barkIcons;
-    
+
     [SerializeField]
     private Icons pickupIcons;
+
+    [SerializeField]
+    private Icons runIcons;
 
 
 
@@ -77,14 +86,17 @@ public class TutorialSystem : MonoBehaviour
     [SerializeField]
     private bool dogInRange;
 
+    [SerializeField]
+    private bool stickInRange;
+
 
     private Coroutine ClapCour;
 
     void Start()
     {
         TutorialAction = new List<Tutorial>() { Tutorial.Idle,Tutorial.Sit,Tutorial.Bark,
-                                                Tutorial.SpawnStick,Tutorial.PickUp,Tutorial.ThrowStick,
-                                                Tutorial.Run,Tutorial.ReturnStick,Tutorial.GiveMeat,Tutorial.End};
+                                                Tutorial.SpawnStick,Tutorial.PickUp,Tutorial.ThrowStick,Tutorial.GetStickBack,
+                                                Tutorial.Run,Tutorial.GiveMeat,Tutorial.End};
 
 
     }
@@ -108,15 +120,20 @@ public class TutorialSystem : MonoBehaviour
             case Tutorial.PickUp:
                 PickUpUpdate();
                 break;
+            case Tutorial.GetStickBack:
+                GetStickBackUpdate();
+                break;
             case Tutorial.ThrowStick:
+                ThrowStickUpdate();
                 break;
             case Tutorial.Run:
-                break;
-            case Tutorial.ReturnStick:
+                RunUpdate();
                 break;
             case Tutorial.GiveMeat:
+                GiveMeatUpdate();
                 break;
             case Tutorial.End:
+                EndUpdate();
                 break;
 
         }
@@ -125,14 +142,16 @@ public class TutorialSystem : MonoBehaviour
 
     private void IdleUpdate()
     {
+        WalkIcons.gameObject.SetActive(true);
+        TutorialIcons.gameObject.SetActive(false);
 
         if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Controller)
         {
-            TutorialIcons.sprite = movementIcons.ControllerIcon;
+            WalkIcons.sprite = movementIcons.ControllerIcon;
         }
         else
         {
-            TutorialIcons.sprite = movementIcons.KeyboardIcon;
+            WalkIcons.sprite = movementIcons.KeyboardIcon;
         }
 
         //animation shit
@@ -141,6 +160,8 @@ public class TutorialSystem : MonoBehaviour
         //check for dog
         if (dogInRange == true)
         {
+            TutorialIcons.gameObject.SetActive(true);
+            WalkIcons.gameObject.SetActive(false);
             TutorialAction.RemoveAt(0);
         }
     }
@@ -213,13 +234,81 @@ public class TutorialSystem : MonoBehaviour
             {
                 if (ClapCour == null)
                 {
-                    ClapCour = StartCoroutine(ClapCoroutine(false));
+                    ClapCour = StartCoroutine(ClapCoroutine(true));
                 }
             }
         }
 
 
     }
+
+    private void GetStickBackUpdate()
+    {
+        //go into crouch animation
+
+        //detect stick avalible
+        if (pickupCont.HasSomethingInMouth == false && stickInRange == true)
+        {
+            //pick up
+
+
+        }
+
+        //go to throw update
+    }
+
+    private void ThrowStickUpdate()
+    {
+        //throw stick animation
+        //Launch stick
+        //wait till animation
+
+        TutorialAction.RemoveAt(0);
+    }
+
+    private void RunUpdate()
+    {
+        //Spawn Icon
+        if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Controller)
+        {
+            TutorialIcons.sprite = runIcons.ControllerIcon;
+        }
+        else
+        {
+            TutorialIcons.sprite = runIcons.KeyboardIcon;
+        }
+
+        if (InputSystem.WoofInput.IsRunning == true)
+        {
+            if (ClapCour == null)
+            {
+                ClapCour = StartCoroutine(ClapCoroutine(true));
+            }
+        }
+
+    }
+
+    private void GiveMeatUpdate()
+    {
+        //play spawn meat anim,
+        //drop meat
+
+        if (InputSystem.WoofInput.IsRunning == true)
+        {
+            if (ClapCour == null)
+            {
+                ClapCour = StartCoroutine(ClapCoroutine(true));
+            }
+        }
+    }
+
+    private void EndUpdate()
+    {
+        //throw some icons
+        //disable tutorial Boundries
+        TutorialBoundries.SetActive(false);
+    }
+
 
     private IEnumerator ClapCoroutine(bool nextAction)
     {
@@ -246,9 +335,13 @@ public class TutorialSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") == true)
+        if (other.CompareTag("Player") == true)
         {
             dogInRange = true;
+        }
+        else if (other.CompareTag("Pickup") == true)
+        {
+            stickInRange = true;
         }
     }
 
@@ -258,6 +351,10 @@ public class TutorialSystem : MonoBehaviour
         {
             dogInRange = true;
         }
+        else if (other.CompareTag("Pickup") == true)
+        {
+            stickInRange = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -266,7 +363,10 @@ public class TutorialSystem : MonoBehaviour
         {
             dogInRange = false;
         }
-
+        else if (other.CompareTag("Pickup") == true)
+        {
+            stickInRange = false;
+        }
 
     }
 
