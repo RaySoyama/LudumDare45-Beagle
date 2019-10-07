@@ -311,7 +311,7 @@ public class TutorialSystem : MonoBehaviour
         Debug.Log("End Action");
         TutorialBoundries.SetActive(false);
     }
-
+    
 
     private IEnumerator ClapCoroutine(bool nextAction)
     {
@@ -332,12 +332,6 @@ public class TutorialSystem : MonoBehaviour
         { 
             TutorialAction.RemoveAt(0);
         }
-    }
-
-
-    public void DropSteak()
-    {
-        Debug.Log("Stick Droped my dude");
     }
 
 
