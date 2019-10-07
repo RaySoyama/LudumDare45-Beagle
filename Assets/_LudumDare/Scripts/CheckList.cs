@@ -93,7 +93,7 @@ public class CheckList : MonoBehaviour
     {
         menuCanvas.SetActive(true);
         checkListOpen = true;
-        Time.timeScale = 0;
+        Time.timeScale = 0.4f;
 
 
     }
