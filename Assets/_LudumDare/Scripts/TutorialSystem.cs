@@ -246,13 +246,14 @@ public class TutorialSystem : MonoBehaviour
     private void GetStickBackUpdate()
     {
         //go into crouch animation
+        manAnim.SetTrigger("pickUp");
 
         //detect stick avalible
         if (pickupCont.HasSomethingInMouth == false && stickInRange == true)
         {
             //pick up
-            Debug.Log("Get Stick back Action");
-
+            manAnim.SetTrigger("throw");
+            
 
             //go to throw update
             TutorialAction.RemoveAt(0);

@@ -36,13 +36,17 @@ public class CavemanAnimProxy : MonoBehaviour
     }
 
     public void PickUpStick()
-    { 
-    
+    {
+        SpawnedStick.transform.parent = manHandJoint.transform;
+        SpawnedStick.transform.position = Vector3.zero;
+        SpawnedStick.GetComponent<ObjectData>().isPickupable = false;
     }
 
     public void ThrowStick()
-    { 
-    
+    {
+        //add force to throw
+        SpawnedStick.transform.parent = null;
+        SpawnedStick.GetComponent<ObjectData>().isPickupable = true;
     }
 
 

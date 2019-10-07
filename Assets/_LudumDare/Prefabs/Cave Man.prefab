@@ -4970,7 +4970,7 @@ MonoBehaviour:
     ControllerIcon: {fileID: 21300000, guid: b95f32e9dac13e44d8b28343e5332bb8, type: 3}
     KeyboardIcon: {fileID: 21300000, guid: 438b0183c67cc764390e227b08f5587a, type: 3}
   runIcons:
-    ControllerIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
+    ControllerIcon: {fileID: 21300000, guid: 31055525bd50c284a9af03fea00b49f2, type: 3}
     KeyboardIcon: {fileID: 21300000, guid: acb42668722ed514685f69d54d9e8730, type: 3}
   TutorialAction: 
   dogInRange: 0
