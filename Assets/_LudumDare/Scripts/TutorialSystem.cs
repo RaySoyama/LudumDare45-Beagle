@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialSystem : MonoBehaviour
 {
@@ -508,9 +509,14 @@ public class TutorialSystem : MonoBehaviour
     {
         if (InputSystem.WoofInput.IsEmote == true && InputSystem.WoofInput.IsBark == true)
         {
+            if (ClapCour == null)
+            {
+                transform.eulerAngles = Vector3.up * 240;
+                ClapCour = StartCoroutine(ClapCoroutine(false));
+            }
 
-            //Load new scene
-            Debug.Break();
+            ScreenFade.SFade.FadeIn("CamCreditScene");
+
         }
     
     }
