@@ -43,6 +43,8 @@ public class WoofMovement : MonoBehaviour
 
     void Update()
     {
+        dogModel.transform.localEulerAngles = new Vector3(0, dogModel.transform.localEulerAngles.y, dogModel.transform.localEulerAngles.z);
+
         if (InputSystem.WoofInput.IsEmote == true)
         {
             anim.SetBool("isSitting",true);
@@ -86,8 +88,14 @@ public class WoofMovement : MonoBehaviour
 
         if (InputSystem.WoofInput.IsDucking == true)
         {
-            anim.SetLayerWeight(2,InputSystem.WoofInput.DuckValue);
-            //anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 1, headDownSpeed * Time.deltaTime));
+            if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Controller)
+            {
+                anim.SetLayerWeight(2, InputSystem.WoofInput.DuckValue);
+            }
+            else 
+            {
+                anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 1, headDownSpeed * Time.deltaTime));
+            }
         }
         else
         {
