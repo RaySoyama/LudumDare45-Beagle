@@ -148,7 +148,7 @@ public class OpeningSceneCamera : MonoBehaviour
     private IEnumerator ToScene()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("RayDevScene");
+        ScreenFade.SFade.FadeIn("RayDevScene");
     }
 
 
