@@ -5538,6 +5538,11 @@ PrefabInstance:
       propertyPath: pickupIndicator
       value: 
       objectReference: {fileID: 1331819851}
+    - target: {fileID: 1199638213870615361, guid: 59080c8bc0a5f60438c1de9dd2626c9c,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 57a3c6b734fe4e84abcdbaedad8d7317, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59080c8bc0a5f60438c1de9dd2626c9c, type: 3}
 --- !u!114 &3492964231132728640
