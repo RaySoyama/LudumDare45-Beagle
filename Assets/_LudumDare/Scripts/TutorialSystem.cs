@@ -102,7 +102,8 @@ public class TutorialSystem : MonoBehaviour
 
     private float nValue;
 
-
+    [SerializeField]
+    private FirePitController fireController;
 
 
     [SerializeField] [ReadOnlyField]
@@ -178,6 +179,7 @@ public class TutorialSystem : MonoBehaviour
                 break;
 
             case Tutorial.LightFire:
+                LightFireUpdate();
                 break;
 
             case Tutorial.End:
@@ -319,7 +321,16 @@ public class TutorialSystem : MonoBehaviour
         Debug.Log("Throw Stick Action");
         manAnim.SetTrigger("throw");
 
-        TutorialAction.RemoveAt(0);
+        nValue += Time.deltaTime;
+
+        if (nValue > 3)
+        {
+
+            nValue = 0;
+            TutorialAction.RemoveAt(0);
+        }
+
+
     }
 
     private void RunUpdate()
@@ -367,12 +378,15 @@ public class TutorialSystem : MonoBehaviour
             ClapCour = StartCoroutine(ClapCoroutine(false));
             TutorialAction.RemoveAt(0);
         }
-        TutorialBoundries.SetActive(false);
     }
 
     private void MenuUpdate()
     {
-        TutorialIcons.gameObject.SetActive(true);
+        if (TutorialBoundries.activeSelf == true)
+        { 
+            TutorialIcons.gameObject.SetActive(true);
+        }
+        
 
         //Spawn Icon
         if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Controller)
@@ -387,11 +401,13 @@ public class TutorialSystem : MonoBehaviour
         //detect sitting
         if (InputSystem.WoofInput.IsMenuDown == true)
         {
+            TutorialIcons.gameObject.SetActive(false);
+            TutorialBoundries.SetActive(false);
+
             if (ClapCour == null)
             {
                 ClapCour = StartCoroutine(ClapCoroutine(true));
-                TutorialIcons.gameObject.SetActive(false);
-                CheckList.ShitList.isTutorialComplete = true;
+                TutorialAction.RemoveAt(0);
             }
         }
     }
@@ -422,15 +438,18 @@ public class TutorialSystem : MonoBehaviour
         if (CheckList.ShitList.isSticksCollected == true && InputSystem.WoofInput.IsBark == true)
         { 
             
-            manAnim.SetBool("isFarming", false);
 
-            transform.LookAt(FireTargertPos.transform.position); 
 
             if (ClapCour == null)
             {
                 StartPos = transform.position;
-                ClapCour = StartCoroutine(ClapCoroutine(true));
+                ClapCour = StartCoroutine(ClapCoroutine(false));
+                manAnim.SetBool("isFarming", false);
+                transform.LookAt(FireTargertPos.transform.position); 
                 CheckList.ShitList.isTutorialComplete = true;
+                TutorialAction.RemoveAt(0);
+                return;
+
             }
 
         }
@@ -452,6 +471,38 @@ public class TutorialSystem : MonoBehaviour
             TutorialAction.RemoveAt(0);
             manAnim.SetBool("isWalking", false);
         }
+
+    }
+
+    private void LightFireUpdate()
+    {
+        nValue += Time.deltaTime;
+
+
+        //hard coded
+        if (nValue >= 3.0f)
+        {
+            manAnim.SetBool("isFarming", false);
+            fireController.lightOnFire = true;
+
+            if (nValue >= 5.0f)
+            { 
+                nValue = 0;
+
+
+                if (ClapCour == null)
+                {
+                    ClapCour = StartCoroutine(ClapCoroutine(false));
+                    TutorialAction.RemoveAt(0);
+                }
+            }
+        }
+        else 
+        {
+            manAnim.SetBool("isFarming", true);
+        }
+
+
 
     }
 
