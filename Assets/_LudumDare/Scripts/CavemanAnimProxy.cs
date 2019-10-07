@@ -25,6 +25,7 @@ public class CavemanAnimProxy : MonoBehaviour
     public void SpawnStick()
     {
         SpawnedStick = Instantiate(StickPrefab, manHandJoint.transform);
+        SpawnedStick.transform.localPosition = Vector3.zero;
         SpawnedStick.GetComponent<ObjectData>().isPickupable = false;
     }
 
