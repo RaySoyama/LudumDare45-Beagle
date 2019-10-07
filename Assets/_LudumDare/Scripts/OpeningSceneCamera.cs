@@ -37,7 +37,9 @@ public class OpeningSceneCamera : MonoBehaviour
 
     [SerializeField]
     private GameObject BlackScreen;
-    
+
+    private Coroutine IHateThis;
+
     void Start()
     { 
         dollyCart.m_Speed = 0;
@@ -69,6 +71,10 @@ public class OpeningSceneCamera : MonoBehaviour
 
                 if (InputSystem.WoofInput.IsBark == true)
                 {
+                    if (IHateThis == null)
+                    { 
+                        IHateThis = StartCoroutine(IHateYou());
+                    }
 
                     dogAnim.SetTrigger("Bark");
 
@@ -77,12 +83,8 @@ public class OpeningSceneCamera : MonoBehaviour
                         if (barkCount == EffectValue.Count)
                         {
                             //Load New Scene
-                            BlackScreen.SetActive(true);
 
-                            if (barkTime >= 3.0f)
-                            {
-                                SceneManager.LoadScene("RayDevScene");
-                            }
+
 
                         }
                         else
@@ -92,10 +94,15 @@ public class OpeningSceneCamera : MonoBehaviour
 
                             PPMat.SetFloat("_Effect", EffectValue[barkCount]);
                             barkCount++;
+
+                            if (barkCount == EffectValue.Count)
+                            {
+                                barkTime = 0;
+                                BlackScreen.SetActive(true);
+                                StartCoroutine(ToScene());
+
+                            }
                         }
-
-
-
 
                     }
 
@@ -113,4 +120,17 @@ public class OpeningSceneCamera : MonoBehaviour
     {
         Graphics.Blit(source, destination, PPMat);
     }
+
+    private IEnumerator IHateYou()
+    {
+        yield return new WaitForSeconds(1);
+        dogAnim.SetTrigger("Bark");
+    }
+    
+    private IEnumerator ToScene()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("RayDevScene");
+    }
+
 }
