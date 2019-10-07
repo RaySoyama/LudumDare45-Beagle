@@ -83,10 +83,10 @@ public class TutorialSystem : MonoBehaviour
     [SerializeField] [ReadOnlyField]
     private List<Tutorial> TutorialAction = new List<Tutorial>();
 
-    [SerializeField]
+    [SerializeField][ReadOnlyField]
     private bool dogInRange;
 
-    [SerializeField]
+    [SerializeField][ReadOnlyField]
     private bool stickInRange;
 
 
@@ -213,6 +213,7 @@ public class TutorialSystem : MonoBehaviour
     {
         //Spawn Stick, Play Animation;
         //wait till animation ends
+        Debug.Log("Spawn Stick Action");
         TutorialAction.RemoveAt(0);
     }
 
@@ -230,13 +231,11 @@ public class TutorialSystem : MonoBehaviour
 
         if (pickupCont.HasSomethingInMouth == true)
         {
-            if (InputSystem.WoofInput.IsBark == true)
+            if (ClapCour == null)
             {
-                if (ClapCour == null)
-                {
-                    ClapCour = StartCoroutine(ClapCoroutine(true));
-                }
+                ClapCour = StartCoroutine(ClapCoroutine(true));
             }
+
         }
 
 
@@ -250,11 +249,13 @@ public class TutorialSystem : MonoBehaviour
         if (pickupCont.HasSomethingInMouth == false && stickInRange == true)
         {
             //pick up
+            Debug.Log("Get Stick back Action");
 
 
+            //go to throw update
+            TutorialAction.RemoveAt(0);
         }
 
-        //go to throw update
     }
 
     private void ThrowStickUpdate()
@@ -262,6 +263,7 @@ public class TutorialSystem : MonoBehaviour
         //throw stick animation
         //Launch stick
         //wait till animation
+        Debug.Log("Throw Stick Action");
 
         TutorialAction.RemoveAt(0);
     }
@@ -293,19 +295,20 @@ public class TutorialSystem : MonoBehaviour
         //play spawn meat anim,
         //drop meat
 
-        if (InputSystem.WoofInput.IsRunning == true)
+        Debug.Log("Spawn Meat Action");
+
+        if (ClapCour == null)
         {
-            if (ClapCour == null)
-            {
-                ClapCour = StartCoroutine(ClapCoroutine(true));
-            }
+            ClapCour = StartCoroutine(ClapCoroutine(true));
         }
+
     }
 
     private void EndUpdate()
     {
         //throw some icons
         //disable tutorial Boundries
+        Debug.Log("End Action");
         TutorialBoundries.SetActive(false);
     }
 

@@ -4905,21 +4905,27 @@ MonoBehaviour:
   manAnim: {fileID: 5768611570708355431}
   dogAnim: {fileID: 0}
   TutorialIcons: {fileID: 0}
+  WalkIcons: {fileID: 0}
+  TutorialBoundries: {fileID: 0}
   pickupCont: {fileID: 0}
   movementIcons:
-    ControllerIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
-    KeyboardIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
+    ControllerIcon: {fileID: 21300000, guid: a19faed16140bec41916c1a8f3a349be, type: 3}
+    KeyboardIcon: {fileID: 21300000, guid: 065cb77ed2d99a143ae2adfd96ec0773, type: 3}
   sitIcons:
-    ControllerIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
-    KeyboardIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
+    ControllerIcon: {fileID: 21300000, guid: 957d9eb04c8d9574fb9f4cd3585404de, type: 3}
+    KeyboardIcon: {fileID: 21300000, guid: f51b774452c6e824797f167f41b26049, type: 3}
   barkIcons:
-    ControllerIcon: {fileID: 0}
-    KeyboardIcon: {fileID: 0}
+    ControllerIcon: {fileID: 21300000, guid: 5f3e61543baebbc478b500d6316fe566, type: 3}
+    KeyboardIcon: {fileID: 21300000, guid: 12daf906a844da04c8ac8f08ff6a31e8, type: 3}
   pickupIcons:
-    ControllerIcon: {fileID: 0}
-    KeyboardIcon: {fileID: 0}
+    ControllerIcon: {fileID: 21300000, guid: b95f32e9dac13e44d8b28343e5332bb8, type: 3}
+    KeyboardIcon: {fileID: 21300000, guid: 438b0183c67cc764390e227b08f5587a, type: 3}
+  runIcons:
+    ControllerIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
+    KeyboardIcon: {fileID: 21300000, guid: acb42668722ed514685f69d54d9e8730, type: 3}
   TutorialAction: 
   dogInRange: 0
+  stickInRange: 0
 --- !u!54 &6692346784797577946
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4945,7 +4951,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8934735561610623928}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -5099,16 +5105,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5524665631493152078, guid: 939aefae57a7c2b428f69cb9707ffccb,
         type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -5524665631493152078, guid: 939aefae57a7c2b428f69cb9707ffccb,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -5524665631493152078, guid: 939aefae57a7c2b428f69cb9707ffccb,
-        type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.082669064
       objectReference: {fileID: 0}
@@ -5116,16 +5112,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9965771
-      objectReference: {fileID: 0}
-    - target: {fileID: 2019885970936570461, guid: 939aefae57a7c2b428f69cb9707ffccb,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2019885970936570461, guid: 939aefae57a7c2b428f69cb9707ffccb,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2019885970936570461, guid: 939aefae57a7c2b428f69cb9707ffccb,
         type: 3}

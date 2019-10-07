@@ -1784,7 +1784,7 @@ PrefabInstance:
     - target: {fileID: 391206559369701417, guid: 8b6a29e7e84d06d4bb13dd92a877a157,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.89
+      value: 8.119
       objectReference: {fileID: 0}
     - target: {fileID: 391206559369701417, guid: 8b6a29e7e84d06d4bb13dd92a877a157,
         type: 3}
@@ -1794,7 +1794,7 @@ PrefabInstance:
     - target: {fileID: 391206559369701417, guid: 8b6a29e7e84d06d4bb13dd92a877a157,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.24
+      value: 9.317
       objectReference: {fileID: 0}
     - target: {fileID: 391206559369701417, guid: 8b6a29e7e84d06d4bb13dd92a877a157,
         type: 3}
@@ -1914,30 +1914,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3492964231132728640}
     - target: {fileID: 1375285628, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
-      propertyPath: movementIcons.ControllerIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: a19faed16140bec41916c1a8f3a349be,
-        type: 3}
-    - target: {fileID: 1375285628, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
-      propertyPath: sitIcons.ControllerIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: 957d9eb04c8d9574fb9f4cd3585404de,
-        type: 3}
-    - target: {fileID: 1375285628, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
-      propertyPath: barkIcons.ControllerIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: 5f3e61543baebbc478b500d6316fe566,
-        type: 3}
-    - target: {fileID: 1375285628, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
-      propertyPath: pickupIcons.ControllerIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: f286032f7f6b78f4a80ab5ca52650fff,
-        type: 3}
-    - target: {fileID: 1375285628, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
-      propertyPath: pickupCont
-      value: 
-      objectReference: {fileID: 148578274}
-    - target: {fileID: 1375285628, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
       propertyPath: WalkIcons
       value: 
       objectReference: {fileID: 1715714623}
@@ -1945,14 +1921,10 @@ PrefabInstance:
       propertyPath: TutorialBoundries
       value: 
       objectReference: {fileID: 49115104}
-    - target: {fileID: 1375285629, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375285629, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 1375285628, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
+      propertyPath: pickupCont
+      value: 
+      objectReference: {fileID: 148578274}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f6ce907242abbc44bdb0988dbaf5d06, type: 3}
 --- !u!1 &1434712639
