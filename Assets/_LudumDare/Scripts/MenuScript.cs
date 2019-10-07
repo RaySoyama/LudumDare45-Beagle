@@ -8,14 +8,18 @@ public class MenuScript : MonoBehaviour
 
     public string StartScene;
 
+    public AudioSource ass;
+
     public void StartGame()
-    {
-        SceneManager.LoadScene(StartScene);
+    {      
+        ScreenFade.SFade.FadeIn(StartScene);
+        ScreenFade.SFade.AudioFadeOut(ass, ass.volume);
     }
 
     public void ShowCredits()
     {
         ScreenFade.SFade.FadeIn("CamCreditScene");
+        ScreenFade.SFade.AudioFadeOut(ass, ass.volume);
     }
 
     public void EndGame()

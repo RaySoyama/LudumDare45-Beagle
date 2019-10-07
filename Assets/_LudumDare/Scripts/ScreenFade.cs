@@ -55,6 +55,19 @@ public class ScreenFade : MonoBehaviour
         }
     }
 
+    private Coroutine AudioCheck;
+    public void AudioFadeOut(AudioSource ass, float startVol )
+    {
+        if (AudioCheck == null)
+        {
+            AudioCheck = StartCoroutine(AudioFadeOutCor(ass,startVol));
+        }
+    }
+
+
+
+
+
     private IEnumerator FadeInCor(string newScene)
     {
         float n = 0;
@@ -85,5 +98,21 @@ public class ScreenFade : MonoBehaviour
         }
         img.gameObject.SetActive(false);
         check = null;
-    }    
+    }
+
+
+    private IEnumerator AudioFadeOutCor(AudioSource ass, float startVol)
+    {
+        float n = 0;
+
+        while (n < transitionDuraion)
+        {
+            n += Time.deltaTime;
+
+            ass.volume = startVol - (n / transitionDuraion);
+            yield return new WaitForEndOfFrame();
+        }
+
+        AudioCheck = null;
+    }
 }

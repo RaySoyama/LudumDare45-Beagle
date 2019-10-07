@@ -82,7 +82,7 @@ public class FirePitController : MonoBehaviour
 			{
                 if (chunk.GetComponent<AudioSource>().isPlaying == false)
                 {
-                    chunk.GetComponent<AudioSource>().Play();
+                    //chunk.GetComponent<AudioSource>().Play();
                 }
 
                 chunk.timeInFire += Time.deltaTime;
@@ -196,7 +196,7 @@ public class FirePitController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-            GetComponent<AudioSource>().Play();
+            //GetComponent<AudioSource>().Play();
             fire.SetActive(true);
             innerFireCollider.SetActive(true);
 

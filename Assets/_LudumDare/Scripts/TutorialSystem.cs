@@ -505,6 +505,8 @@ public class TutorialSystem : MonoBehaviour
 
     }
 
+
+    public AudioSource ass;
     private void EndUpdate()
     {
         if (InputSystem.WoofInput.IsEmote == true && InputSystem.WoofInput.IsBark == true)
@@ -516,9 +518,11 @@ public class TutorialSystem : MonoBehaviour
             }
 
             ScreenFade.SFade.FadeIn("CamCreditScene");
+            ScreenFade.SFade.AudioFadeOut(ass, ass.volume);
+
 
         }
-    
+
     }
     
 
