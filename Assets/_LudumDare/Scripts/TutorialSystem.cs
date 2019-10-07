@@ -397,11 +397,14 @@ public class TutorialSystem : MonoBehaviour
         nValue += Time.deltaTime * walkSpeed;
         transform.position = Vector3.Lerp(StartPos, FarmTargertPos.transform.position, nValue);
 
+        manAnim.SetBool("isWalking", true);
+
         if (nValue >= 1.0f)
         {
             transform.position = FarmTargertPos.transform.position;
             nValue = 0;
             TutorialAction.RemoveAt(0);
+           manAnim.SetBool("isWalking", false);
         }
     }
 
