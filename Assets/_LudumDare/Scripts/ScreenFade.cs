@@ -22,7 +22,8 @@ public class ScreenFade : MonoBehaviour
             SFade = this;
         }
 
-        Object.DontDestroyOnLoad(this);        
+        Object.DontDestroyOnLoad(this);
+        FadeOut();
     }
 
     private void Update()
@@ -62,7 +63,8 @@ public class ScreenFade : MonoBehaviour
         {
             n += Time.deltaTime;
 
-                img.color = new Color(0, 0, 0, n / transitionDuraion);
+            img.color = new Color(0, 0, 0, n / transitionDuraion);
+            
             yield return new WaitForEndOfFrame();
         }
 
@@ -76,6 +78,8 @@ public class ScreenFade : MonoBehaviour
 
         while (n < transitionDuraion)
         {
+            n += Time.deltaTime;
+
             img.color = new Color(0, 0, 0, 1.0f - (n / transitionDuraion));
             yield return new WaitForEndOfFrame();
         }
