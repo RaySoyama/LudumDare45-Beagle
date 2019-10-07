@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_LudumDare/_Scenes/Rays Scenes/RayDevScene.unity
     guid: 1e209477575ede54f916764ad14e67fc
+  - enabled: 1
+    path: Assets/_LudumDare/_Scenes/Cams Scenes/CamCreditScene.unity
+    guid: f55c98120792145439141974590b7f4e
   m_configObjects: {}
