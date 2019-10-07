@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 4657889959069544874}
   - component: {fileID: 3359335251327640632}
   - component: {fileID: 486567146207852708}
+  - component: {fileID: 6391514193209253319}
   m_Layer: 0
   m_Name: Rock_2
   m_TagString: Untagged
@@ -158,6 +159,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &6391514193209253319
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550979187297707367}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.10868732
+  m_Center: {x: 0.000000048428774, y: 0, z: -0.00000001862645}
 --- !u!1 &1614540013560121176
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +183,7 @@ GameObject:
   - component: {fileID: 1543719626557019150}
   - component: {fileID: 6784992030472949865}
   - component: {fileID: 8086743632769079004}
+  - component: {fileID: 721069128986042428}
   m_Layer: 0
   m_Name: Rock_3
   m_TagString: Untagged
@@ -236,6 +251,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &721069128986042428
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614540013560121176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.13807112
+  m_Center: {x: -0.00000011920929, y: 0, z: 0}
 --- !u!1 &1650964266573282992
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +595,7 @@ GameObject:
   - component: {fileID: 1089500385460454169}
   - component: {fileID: 4003300858944334836}
   - component: {fileID: 4921572813297035988}
+  - component: {fileID: 3064343723335985171}
   m_Layer: 0
   m_Name: Rock_4
   m_TagString: Untagged
@@ -634,6 +663,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &3064343723335985171
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318760571776004875}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6749719
+  m_Center: {x: -0.00000005960463, y: -0.00000008940697, z: 0}
 --- !u!1 &4455429761528703456
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +687,7 @@ GameObject:
   - component: {fileID: 778520315968158924}
   - component: {fileID: 2022754640520295232}
   - component: {fileID: 5198743770109365394}
+  - component: {fileID: 9196924736914580186}
   m_Layer: 0
   m_Name: Rock_5
   m_TagString: Untagged
@@ -712,6 +755,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &9196924736914580186
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4455429761528703456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.16624907
+  m_Center: {x: 0, y: 0.000000007450581, z: 0.00000001490116}
 --- !u!1 &4668750209945153036
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +984,7 @@ GameObject:
   - component: {fileID: 8348964504618182581}
   - component: {fileID: 5135763722715672300}
   - component: {fileID: 687423422025898503}
+  - component: {fileID: 5857929339729385430}
   m_Layer: 0
   m_Name: Rock_1
   m_TagString: Untagged
@@ -995,6 +1052,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &5857929339729385430
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5603489985681295908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1692027
+  m_Center: {x: -0.00000009685755, y: 0, z: 0.00000025704503}
 --- !u!1 &5979040863123101325
 GameObject:
   m_ObjectHideFlags: 0
