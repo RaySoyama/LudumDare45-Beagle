@@ -318,14 +318,16 @@ public class TutorialSystem : MonoBehaviour
         //throw stick animation
         //Launch stick
         //wait till animation
-        Debug.Log("Throw Stick Action");
-        manAnim.SetTrigger("throw");
-
+        if (nValue == 0)
+        { 
+            Debug.Log("Throw Stick Action");
+            manAnim.SetTrigger("throw");
+        }
+        
         nValue += Time.deltaTime;
 
-        if (nValue > 3)
+        if (nValue > 2)
         {
-
             nValue = 0;
             TutorialAction.RemoveAt(0);
         }
@@ -369,14 +371,14 @@ public class TutorialSystem : MonoBehaviour
 
         //drop meat
 
-        manAnim.SetTrigger("dropMeat");
+
 
         Debug.Log("Spawn Meat Action");
 
         if (ClapCour == null)
         {
-            ClapCour = StartCoroutine(ClapCoroutine(false));
-            TutorialAction.RemoveAt(0);
+            manAnim.SetTrigger("dropMeat");
+            ClapCour = StartCoroutine(ClapCoroutine(true));
         }
     }
 
@@ -403,11 +405,11 @@ public class TutorialSystem : MonoBehaviour
         {
             TutorialIcons.gameObject.SetActive(false);
             TutorialBoundries.SetActive(false);
+            CheckList.ShitList.isTutorialComplete = true;
 
             if (ClapCour == null)
             {
                 ClapCour = StartCoroutine(ClapCoroutine(true));
-                TutorialAction.RemoveAt(0);
             }
         }
     }
