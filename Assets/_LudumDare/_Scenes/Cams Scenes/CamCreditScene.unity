@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Music
+  m_text: 'Music / Sound
 
     Alex (Alexzoin) Cecrle'
   m_isRightToLeft: 0
@@ -1262,10 +1262,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 98488366}
-    characterCount: 28
+    characterCount: 36
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 4
+    spaceCount: 5
+    wordCount: 5
     linkCount: 0
     lineCount: 2
     pageCount: 1
@@ -5655,7 +5655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Systems Programer / Technical Artist
+  m_text: 'Systems Programmer / Technical Artist
 
     Ray Soyama'
   m_isRightToLeft: 0
@@ -5727,7 +5727,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 618711829}
-    characterCount: 47
+    characterCount: 48
     spriteCount: 0
     spaceCount: 6
     wordCount: 6
