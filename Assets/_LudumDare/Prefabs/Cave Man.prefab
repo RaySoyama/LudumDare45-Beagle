@@ -5361,8 +5361,12 @@ MonoBehaviour:
     ControllerIcon: {fileID: 21300000, guid: 24729e7cb6773dc4ab1f6ddf35c5ea7b, type: 3}
     KeyboardIcon: {fileID: 21300000, guid: acb42668722ed514685f69d54d9e8730, type: 3}
   menuIcons:
-    ControllerIcon: {fileID: 0}
-    KeyboardIcon: {fileID: 0}
+    ControllerIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
+    KeyboardIcon: {fileID: 21300000, guid: 48df9b1cbdd7a974f82a6a1396983f3d, type: 3}
+  FarmTargertPos: {fileID: 0}
+  StartPos: {x: 0, y: 0, z: 0}
+  walkSpeed: 0.5
+
   TutorialAction: 
   dogInRange: 0
   stickInRange: 0
