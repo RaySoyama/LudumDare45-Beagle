@@ -1083,6 +1083,7 @@ GameObject:
   - component: {fileID: 6381283423262789302}
   - component: {fileID: 6936729559173993430}
   - component: {fileID: 3701829697375583708}
+  - component: {fileID: 1787776948}
   m_Layer: 9
   m_Name: WoofPrefab
   m_TagString: Untagged
@@ -1175,6 +1176,14 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.4
   m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!81 &1787776948
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4007272559314464604}
+  m_Enabled: 1
 --- !u!1 &4106696595177714686
 GameObject:
   m_ObjectHideFlags: 0
