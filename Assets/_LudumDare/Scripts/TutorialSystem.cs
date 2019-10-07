@@ -289,6 +289,7 @@ public class TutorialSystem : MonoBehaviour
             //go to throw update
             shitTriggered = false;
             TutorialAction.RemoveAt(0);
+            return;
         }
 
     }
