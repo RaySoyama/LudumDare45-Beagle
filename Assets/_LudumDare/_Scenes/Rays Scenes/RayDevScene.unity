@@ -753,7 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e048ce562a2d0c47979001ec8e96298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDuraion: 0.72
+  transitionDuraion: 2
   img: {fileID: 975537276}
 --- !u!1001 &366435593
 PrefabInstance:

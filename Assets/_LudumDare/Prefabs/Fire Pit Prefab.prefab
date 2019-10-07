@@ -15049,8 +15049,8 @@ MonoBehaviour:
   fire: {fileID: 1869827130312293721}
   cookedMeatMat: {fileID: 2100000, guid: f0a0f5c08a89ca641a1cd9aa822ad42a, type: 2}
   burnedMeatMat: {fileID: 2100000, guid: 5471b4167a19dfd4c8f9eda0dd560e8a, type: 2}
-  timeToCook: 3
-  timeToBurn: 6
+  timeToCook: 6
+  timeToBurn: 10
   innerFireCollider: {fileID: 1869827129899714489}
   outerFireCollider: {fileID: 8117659649033151274}
   lightOnFire: 0
