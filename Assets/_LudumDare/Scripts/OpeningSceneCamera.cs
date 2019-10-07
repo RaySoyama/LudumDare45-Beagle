@@ -40,7 +40,9 @@ public class OpeningSceneCamera : MonoBehaviour
     private Sprite controllerBark; 
 
     [SerializeField]
-    private Sprite keyboardBark; 
+    private Sprite keyboardBark;
+
+    public AudioSource ass;
 
 
 
@@ -149,6 +151,8 @@ public class OpeningSceneCamera : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         ScreenFade.SFade.FadeIn("RayDevScene");
+        ScreenFade.SFade.AudioFadeOut(ass,ass.volume);
+
     }
 
 
