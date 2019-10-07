@@ -51,6 +51,12 @@ public class FirePitController : MonoBehaviour
 
 	void FixedUpdate()
     {
+
+        if (sticks.Count >= numberOfSticksNeeded)
+        {
+            CheckList.ShitList.isSticksCollected = true;
+        }
+
 		if (sticks.Count >= numberOfSticksNeeded && lightOnFire == true)
 		{
             //Light the fire

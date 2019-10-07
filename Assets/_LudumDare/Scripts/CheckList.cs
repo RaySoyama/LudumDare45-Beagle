@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CheckList : MonoBehaviour
 {
+
+    public static CheckList ShitList;
+
     [SerializeField]
     private GameObject menuCanvas;
 
@@ -11,10 +14,28 @@ public class CheckList : MonoBehaviour
     private Text checkListText;
    
     
-    [SerializeField]
-    private bool checkListOpen = false;
+    public bool checkListOpen = false;
+
+    public bool isTutorialComplete = false;
+    
+    public bool isSticksCollected = false;
+
+    public bool isManCalled = false;
+
+    public bool isMeatCooked = false;
+
+    public bool isGoodBoi = false;
+
+
+
+
     void Start()
     {
+        if (ShitList == null)
+        {
+            ShitList = this;
+        }
+
         checkListOpen = false;
         menuCanvas.SetActive(false);
     }
@@ -26,10 +47,38 @@ public class CheckList : MonoBehaviour
             ToggleCheckList();
         }
 
+
+    }
+
+    private void UpdateList()
+    {
+
+        if (isTutorialComplete == false)
+        {
+            checkListText.text = $"Complete Tutorial";
+        }
+        else if (isSticksCollected == false)
+        {
+            checkListText.text = $"Collect 5 Sticks to the Fire Pit";
+        }
+        else if (isManCalled == false)
+        {
+            checkListText.text = $"Bark for Attention";
+        }
+        else if (isMeatCooked == false)
+        {
+            checkListText.text = $"Cook Meat";
+        }
+        else if (isGoodBoi == false)
+        { 
+            checkListText.text = $"Be a Good Boi";
+        }
     }
 
     public void ToggleCheckList()
     {
+        UpdateList();
+
         if (checkListOpen == true)
         {
             CloseCheckList();

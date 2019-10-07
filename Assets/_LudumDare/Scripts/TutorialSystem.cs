@@ -91,6 +91,9 @@ public class TutorialSystem : MonoBehaviour
     [SerializeField]
     private GameObject FarmTargertPos;
 
+    [SerializeField]
+    private GameObject FireTargertPos;
+
     [SerializeField][ReadOnlyField]
     private Vector3 StartPos;
 
@@ -168,9 +171,10 @@ public class TutorialSystem : MonoBehaviour
                 WalkToFarmUpdate();
                 break;
             case Tutorial.Farm:
+                FarmUpdate();
                 break;
-            
             case Tutorial.WalkToFire:
+                WalkToFireUpdate();
                 break;
 
             case Tutorial.LightFire:
@@ -386,6 +390,8 @@ public class TutorialSystem : MonoBehaviour
             if (ClapCour == null)
             {
                 ClapCour = StartCoroutine(ClapCoroutine(true));
+                TutorialIcons.gameObject.SetActive(false);
+                CheckList.ShitList.isTutorialComplete = true;
             }
         }
     }
@@ -406,6 +412,47 @@ public class TutorialSystem : MonoBehaviour
             TutorialAction.RemoveAt(0);
            manAnim.SetBool("isWalking", false);
         }
+    }
+
+    private void FarmUpdate()
+    {
+        manAnim.SetBool("isFarming", true);
+
+
+        if (CheckList.ShitList.isSticksCollected == true && InputSystem.WoofInput.IsBark == true)
+        { 
+            
+            manAnim.SetBool("isFarming", false);
+
+            transform.LookAt(FireTargertPos.transform.position); 
+
+            if (ClapCour == null)
+            {
+                StartPos = transform.position;
+                ClapCour = StartCoroutine(ClapCoroutine(true));
+                CheckList.ShitList.isTutorialComplete = true;
+            }
+
+        }
+    }
+
+    private void WalkToFireUpdate()
+    {
+        transform.LookAt(FireTargertPos.transform.position);
+
+        nValue += Time.deltaTime * walkSpeed;
+        transform.position = Vector3.Lerp(StartPos, FireTargertPos.transform.position, nValue);
+
+        manAnim.SetBool("isWalking", true);
+
+        if (nValue >= 1.0f)
+        {
+            transform.position = FireTargertPos.transform.position;
+            nValue = 0;
+            TutorialAction.RemoveAt(0);
+            manAnim.SetBool("isWalking", false);
+        }
+
     }
 
     private void EndUpdate()
