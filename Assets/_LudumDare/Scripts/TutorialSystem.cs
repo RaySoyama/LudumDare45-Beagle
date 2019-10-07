@@ -38,6 +38,11 @@ public class TutorialSystem : MonoBehaviour
         Run,
         DestroyStick,
         GiveMeat,
+        Menu,
+        WalkToFarm,
+        Farm,
+        WalkToFire,
+        LightFire,
         End
     }
 
@@ -77,6 +82,10 @@ public class TutorialSystem : MonoBehaviour
 
     [SerializeField]
     private Icons runIcons;
+    
+    [SerializeField]
+    private Icons menuIcons;
+
 
 
 
@@ -99,8 +108,9 @@ public class TutorialSystem : MonoBehaviour
     void Start()
     {
         TutorialAction = new List<Tutorial>() { Tutorial.Idle,Tutorial.Sit,Tutorial.Bark,
-                                                Tutorial.SpawnStick,Tutorial.PickUp,Tutorial.GetStickBack, Tutorial.ThrowStick,Tutorial.Run,
-                                                Tutorial.GetStickBack,Tutorial.DestroyStick,Tutorial.GiveMeat,Tutorial.End};
+                                                Tutorial.SpawnStick,Tutorial.PickUp,Tutorial.GetStickBack, Tutorial.ThrowStick,
+                                                Tutorial.Run,Tutorial.GetStickBack,Tutorial.DestroyStick,Tutorial.GiveMeat,
+                                                Tutorial.Menu,Tutorial.WalkToFarm,Tutorial.Farm,Tutorial.WalkToFire, Tutorial.LightFire, Tutorial.End};
 
 
     }
@@ -139,6 +149,20 @@ public class TutorialSystem : MonoBehaviour
             case Tutorial.GiveMeat:
                 GiveMeatUpdate();
                 break;
+            case Tutorial.Menu:
+                MenuUpdate();
+                break;
+            case Tutorial.WalkToFarm:
+                break;
+            case Tutorial.Farm:
+                break;
+            
+            case Tutorial.WalkToFire:
+                break;
+
+            case Tutorial.LightFire:
+                break;
+
             case Tutorial.End:
                 EndUpdate();
                 break;
@@ -325,7 +349,29 @@ public class TutorialSystem : MonoBehaviour
             ClapCour = StartCoroutine(ClapCoroutine(false));
             TutorialAction.RemoveAt(0);
         }
+        TutorialBoundries.SetActive(false);
+    }
 
+    private void MenuUpdate()
+    {
+        //Spawn Icon
+        if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Controller)
+        {
+            TutorialIcons.sprite = menuIcons.ControllerIcon;
+        }
+        else
+        {
+            TutorialIcons.sprite = menuIcons.KeyboardIcon;
+        }
+
+        //detect sitting
+        if (InputSystem.WoofInput.IsMenuDown == true)
+        {
+            if (ClapCour == null)
+            {
+                ClapCour = StartCoroutine(ClapCoroutine(true));
+            }
+        }
     }
 
     private void EndUpdate()
@@ -334,7 +380,6 @@ public class TutorialSystem : MonoBehaviour
         //disable tutorial Boundries
 
         Debug.Log("End Action");
-        TutorialBoundries.SetActive(false);
     }
     
 
