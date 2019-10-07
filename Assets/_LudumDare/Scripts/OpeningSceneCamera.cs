@@ -76,10 +76,10 @@ public class OpeningSceneCamera : MonoBehaviour
                         IHateThis = StartCoroutine(IHateYou());
                     }
 
-                    dogAnim.SetTrigger("Bark");
 
-                    if (barkTime >= 1.0f / 15.0f)
+                    if (barkTime >= 2.0f / 3.0f)
                     {
+                    dogAnim.SetTrigger("Bark");
                         if (barkCount == EffectValue.Count)
                         {
                             //Load New Scene
@@ -90,7 +90,7 @@ public class OpeningSceneCamera : MonoBehaviour
                         else
                         {
 
-                            barkTime -= 1.0f / 15.0f;
+                            barkTime -= 2.0f / 3.0f;
 
                             PPMat.SetFloat("_Effect", EffectValue[barkCount]);
                             barkCount++;
