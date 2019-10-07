@@ -434,24 +434,19 @@ public class TutorialSystem : MonoBehaviour
 
     private void FarmUpdate()
     {
-        manAnim.SetBool("isFarming", true);
-
-
+        if (ClapCour == null)
+        { 
+            manAnim.SetBool("isFarming", true);
+        }
         if (CheckList.ShitList.isSticksCollected == true && InputSystem.WoofInput.IsBark == true)
         { 
-            
-
-
             if (ClapCour == null)
             {
                 StartPos = transform.position;
-                ClapCour = StartCoroutine(ClapCoroutine(false));
+                ClapCour = StartCoroutine(ClapCoroutine(true));
                 manAnim.SetBool("isFarming", false);
                 transform.LookAt(FireTargertPos.transform.position); 
-                CheckList.ShitList.isTutorialComplete = true;
-                TutorialAction.RemoveAt(0);
-                return;
-
+                CheckList.ShitList.isManCalled = true;
             }
 
         }
@@ -494,6 +489,7 @@ public class TutorialSystem : MonoBehaviour
 
                 if (ClapCour == null)
                 {
+                    transform.eulerAngles = Vector3.up * 240;
                     ClapCour = StartCoroutine(ClapCoroutine(false));
                     TutorialAction.RemoveAt(0);
                 }
@@ -510,10 +506,13 @@ public class TutorialSystem : MonoBehaviour
 
     private void EndUpdate()
     {
-        //throw some icons
-        //disable tutorial Boundries
+        if (InputSystem.WoofInput.IsEmote == true && InputSystem.WoofInput.IsBark == true)
+        {
 
-        Debug.Log("End Action");
+            //Load new scene
+            Debug.Break();
+        }
+    
     }
     
 

@@ -84,6 +84,8 @@ public class FirePitController : MonoBehaviour
 
                 if (chunk.timeInFire > timeToCook)
                 {
+                    CheckList.ShitList.isMeatCooked = true;
+
                     chunk.gameObject.GetComponentInChildren<Renderer>().material = cookedMeatMat;
                  
                     if (chunk.timeInFire > timeToBurn)
