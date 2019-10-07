@@ -71,7 +71,7 @@ public class CheckList : MonoBehaviour
         }
         else if (isGoodBoi == false)
         { 
-            checkListText.text = $"Be a Good Boi";
+            checkListText.text = $"Be A Good Boi\nSit n Bark";
         }
     }
 
