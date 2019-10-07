@@ -58,7 +58,7 @@ public class ScreenFade : MonoBehaviour
     private IEnumerator FadeInCor(string newScene)
     {
         float n = 0;
-
+        img.gameObject.SetActive(true);
         while (n < transitionDuraion)
         {
             n += Time.deltaTime;
@@ -83,7 +83,7 @@ public class ScreenFade : MonoBehaviour
             img.color = new Color(0, 0, 0, 1.0f - (n / transitionDuraion));
             yield return new WaitForEndOfFrame();
         }
-
+        img.gameObject.SetActive(false);
         check = null;
     }    
 }
