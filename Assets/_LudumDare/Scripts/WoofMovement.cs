@@ -85,13 +85,21 @@ public class WoofMovement : MonoBehaviour
 
         if (InputSystem.WoofInput.IsDucking == true)
         {
-            //anim.SetLayerWeight(2,InputSystem.WoofInput.DuckValue);
-            anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 1, headDownSpeed * Time.deltaTime));
+            anim.SetLayerWeight(2,InputSystem.WoofInput.DuckValue);
+            //anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 1, headDownSpeed * Time.deltaTime));
         }
         else
         {
             anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 0, headDownSpeed * Time.deltaTime));
         }
+
+        if (InputSystem.WoofInput.IsBark == true)
+        {
+            anim.SetLayerWeight(3,1);
+            anim.SetTrigger("Bark");
+        }
+
+
 
 
 
@@ -114,6 +122,11 @@ public class WoofMovement : MonoBehaviour
 
             CameraController.CamController.ExitCave();
         }
+    }
+
+    public void EndBark()
+    {
+        anim.SetLayerWeight(3, 0);
     }
 
 }
