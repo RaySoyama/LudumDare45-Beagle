@@ -1805,7 +1805,7 @@ MonoBehaviour:
   zoomInButton: LeftBumper
   zoomOutButton: RightBumper
   emoteButton: XboxX
-  barkButton: RightTrigger
+  barkButton: XboxB
   menuButton: Start
   inputMode: 0
 --- !u!114 &1435910599

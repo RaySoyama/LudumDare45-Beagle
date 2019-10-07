@@ -186,7 +186,7 @@ public class InputSystem : MonoBehaviour
     [SerializeField]
     private string emoteButton = "XboxX";
     [SerializeField]
-    private string barkButton = "RightTrigger";
+    private string barkButton = "XboxB";
     
     [SerializeField]
     private string menuButton = "Start";
@@ -209,7 +209,7 @@ public class InputSystem : MonoBehaviour
     {
         if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || Input.GetButton(runButton) || 
             Input.GetButton(grabButton) || Input.GetAxis(duckButton) != 0.0f || Input.GetButton(zoomInButton) || 
-            Input.GetButton(zoomOutButton) || Input.GetButton(emoteButton) || Input.GetAxis(barkButton) != 0.0f || Input.GetButtonDown(menuButton))
+            Input.GetButton(zoomOutButton) || Input.GetButton(emoteButton) || Input.GetButton(barkButton)|| Input.GetButtonDown(menuButton))
         {
             inputMode = InputMode.Controller;
         }
@@ -254,14 +254,7 @@ public class InputSystem : MonoBehaviour
 
         isEmote = Input.GetButton(emoteButton);
 
-        if (Input.GetAxis(barkButton) >= 0.1f)
-        {
-            isBark = true;
-        }
-        else
-        { 
-            isBark = false;
-        }
+        isBark = Input.GetButtonDown(barkButton);
 
 
 

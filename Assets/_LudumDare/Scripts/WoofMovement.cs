@@ -33,6 +33,8 @@ public class WoofMovement : MonoBehaviour
     [SerializeField]
     private float headDownSpeed;
 
+
+    private Coroutine BorkCour;
 	void Start()
     {
         mainCamera = Camera.main.gameObject;
@@ -104,7 +106,12 @@ public class WoofMovement : MonoBehaviour
 
         if (InputSystem.WoofInput.IsBark == true)
         {
-            anim.SetTrigger("Bark");
+            if (BorkCour == null)
+            {
+                BorkCour = StartCoroutine(Bork());
+                anim.SetTrigger("Bark");           
+            }
+
         }
 
 
@@ -132,9 +139,13 @@ public class WoofMovement : MonoBehaviour
         }
     }
 
-    public void EndBark()
+    private IEnumerator Bork()
     {
-        anim.SetLayerWeight(3, 0);
+        anim.SetTrigger("Bark");
+        yield return new WaitForSeconds(0.6f);
+        BorkCour = null;
+        
     }
+
 
 }

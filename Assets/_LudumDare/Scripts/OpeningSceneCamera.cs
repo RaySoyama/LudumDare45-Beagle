@@ -30,9 +30,6 @@ public class OpeningSceneCamera : MonoBehaviour
     [SerializeField]
     private Animator manAnim;
 
-    [SerializeField][ReadOnlyField]
-    private float barkTime;
-
     public bool isGameStarted = false;
 
     [SerializeField]
@@ -42,6 +39,8 @@ public class OpeningSceneCamera : MonoBehaviour
     private GameObject BlackScreen;
 
     private Coroutine IHateThis;
+
+    private Coroutine BarkCour;
 
 
     void Start()
@@ -69,8 +68,6 @@ public class OpeningSceneCamera : MonoBehaviour
             //hard coded
             if (dollyCart.m_Position >= 17.11724)
             {
-                barkTime += Time.deltaTime;
-
                 barkIcon.SetActive(true);
 
                 if (InputSystem.WoofInput.IsBark == true)
@@ -80,35 +77,10 @@ public class OpeningSceneCamera : MonoBehaviour
                         IHateThis = StartCoroutine(IHateYou());
                     }
 
-
-                    if (barkTime >= 2.0f / 3.0f)
+                    if (BarkCour == null)
                     {
-                        dogAnim.SetTrigger("Bark");
-                        if (barkCount == EffectValue.Count)
-                        {
-                            //Load New Scene
-
-
-
-                        }
-                        else
-                        {
-
-                            barkTime -= 2.0f / 3.0f;
-
-                            PPMat.SetFloat("_Effect", EffectValue[barkCount]);
-                            barkCount++;
-
-                            if (barkCount == EffectValue.Count)
-                            {
-                                barkTime = 0;
-                                BlackScreen.SetActive(true);
-                                StartCoroutine(ToScene());
-
-                            }
-                        }
-
-                    }
+                        BarkCour = StartCoroutine(Bork());
+                    }  
 
                 }
             }
@@ -128,11 +100,31 @@ public class OpeningSceneCamera : MonoBehaviour
     private IEnumerator IHateYou()
     {
         yield return new WaitForSeconds(1);
-        dogAnim.SetTrigger("Bark");
         manAnim.SetLayerWeight(1, 1);
         manAnim.SetTrigger("Look");
     }
-    
+
+    private IEnumerator Bork()
+    {
+        dogAnim.SetTrigger("Bark");
+        yield return new WaitForSeconds(0.2f);
+
+        PPMat.SetFloat("_Effect", EffectValue[barkCount]);
+        barkCount++;
+
+        if (barkCount == EffectValue.Count)
+        {
+            BlackScreen.SetActive(true);
+            StartCoroutine(ToScene());
+        }
+        else
+        { 
+            yield return new WaitForSeconds(0.8f);
+            BarkCour = null;
+        }
+    }
+
+
     private IEnumerator ToScene()
     {
         yield return new WaitForSeconds(3);
