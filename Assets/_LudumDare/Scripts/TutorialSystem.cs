@@ -95,8 +95,8 @@ public class TutorialSystem : MonoBehaviour
     void Start()
     {
         TutorialAction = new List<Tutorial>() { Tutorial.Idle,Tutorial.Sit,Tutorial.Bark,
-                                                Tutorial.SpawnStick,Tutorial.PickUp,Tutorial.ThrowStick,Tutorial.GetStickBack,
-                                                Tutorial.Run,Tutorial.GiveMeat,Tutorial.End};
+                                                Tutorial.SpawnStick,Tutorial.PickUp,Tutorial.GetStickBack, Tutorial.ThrowStick,Tutorial.Run,
+                                                Tutorial.GetStickBack,Tutorial.GiveMeat,Tutorial.End};
 
 
     }
@@ -251,10 +251,6 @@ public class TutorialSystem : MonoBehaviour
         //detect stick avalible
         if (pickupCont.HasSomethingInMouth == false && stickInRange == true)
         {
-            //pick up
-            manAnim.SetTrigger("throw");
-            
-
             //go to throw update
             TutorialAction.RemoveAt(0);
         }
@@ -267,6 +263,7 @@ public class TutorialSystem : MonoBehaviour
         //Launch stick
         //wait till animation
         Debug.Log("Throw Stick Action");
+        manAnim.SetTrigger("throw");
 
         TutorialAction.RemoveAt(0);
     }
@@ -295,7 +292,9 @@ public class TutorialSystem : MonoBehaviour
 
     private void GiveMeatUpdate()
     {
+        TutorialIcons.gameObject.SetActive(false);
         //play spawn meat anim,
+
         //drop meat
 
         Debug.Log("Spawn Meat Action");
