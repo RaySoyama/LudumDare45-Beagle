@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OpeningSceneCamera : MonoBehaviour
 {
@@ -33,7 +34,15 @@ public class OpeningSceneCamera : MonoBehaviour
     public bool isGameStarted = false;
 
     [SerializeField]
-    private GameObject barkIcon;
+    private Image barkIcon;
+
+    [SerializeField]
+    private Sprite controllerBark; 
+
+    [SerializeField]
+    private Sprite keyboardBark; 
+
+
 
     [SerializeField]
     private GameObject BlackScreen;
@@ -48,7 +57,7 @@ public class OpeningSceneCamera : MonoBehaviour
         dollyCart.m_Speed = 0;
         isGameStarted = false;
         PPMat.SetFloat("_Effect", 222);
-        barkIcon.SetActive(false);
+        barkIcon.gameObject.SetActive(false);
         BlackScreen.SetActive(false);
     }
 
@@ -68,7 +77,18 @@ public class OpeningSceneCamera : MonoBehaviour
             //hard coded
             if (dollyCart.m_Position >= 17.11724)
             {
-                barkIcon.SetActive(true);
+                barkIcon.gameObject.SetActive(true);
+
+                if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Controller)
+                {
+                    barkIcon.sprite = controllerBark;
+                }
+                else
+                { 
+                    barkIcon.sprite = keyboardBark;
+                }
+                
+
 
                 if (InputSystem.WoofInput.IsBark == true)
                 {

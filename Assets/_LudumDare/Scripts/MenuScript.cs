@@ -8,19 +8,14 @@ public class MenuScript : MonoBehaviour
 
     public string StartScene;
 
-    void Start()
-    {
-        
-    }
-
     public void StartGame()
     {
         SceneManager.LoadScene(StartScene);
     }
 
     public void ShowCredits()
-    { 
-    
+    {
+        ScreenFade.SFade.FadeIn("CamCreditScene");
     }
 
     public void EndGame()

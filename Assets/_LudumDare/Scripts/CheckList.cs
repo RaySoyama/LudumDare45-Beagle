@@ -55,23 +55,23 @@ public class CheckList : MonoBehaviour
 
         if (isTutorialComplete == false)
         {
-            checkListText.text = $"Complete Tutorial";
+            checkListText.text = $"Current Task: Complete Tutorial";
         }
         else if (isSticksCollected == false)
         {
-            checkListText.text = $"Collect 5 Sticks to the Fire Pit";
+            checkListText.text = $"Current Task: \nGather 5 Sticks in the Fire Pit";
         }
         else if (isManCalled == false)
         {
-            checkListText.text = $"Bark for Attention";
+            checkListText.text = $"Current Task: Bark for Attention";
         }
         else if (isMeatCooked == false)
         {
-            checkListText.text = $"Cook Meat";
+            checkListText.text = $"Current Task: Cook Meat";
         }
         else if (isGoodBoi == false)
         { 
-            checkListText.text = $"Be A Good Boi\nSit n Bark";
+            checkListText.text = $"Current Task: Be A Good Boi\nSit n Bark";
         }
     }
 
