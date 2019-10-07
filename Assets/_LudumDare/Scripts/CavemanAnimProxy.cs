@@ -61,6 +61,11 @@ public class CavemanAnimProxy : MonoBehaviour
         SpawnedItem.transform.position = stickThrowPos.position;
     }
 
+    public void DestroyStick()
+    { 
+    
+    }
+
     public void SpawnMeat()
     {
         SpawnedItem = Instantiate(SteakPrefab, manHandJoint.transform);

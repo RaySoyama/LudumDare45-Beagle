@@ -36,6 +36,7 @@ public class TutorialSystem : MonoBehaviour
         GetStickBack,
         ThrowStick,
         Run,
+        DestroyStick,
         GiveMeat,
         End
     }
@@ -96,7 +97,7 @@ public class TutorialSystem : MonoBehaviour
     {
         TutorialAction = new List<Tutorial>() { Tutorial.Idle,Tutorial.Sit,Tutorial.Bark,
                                                 Tutorial.SpawnStick,Tutorial.PickUp,Tutorial.GetStickBack, Tutorial.ThrowStick,Tutorial.Run,
-                                                Tutorial.GetStickBack,Tutorial.GiveMeat,Tutorial.End};
+                                                Tutorial.GetStickBack,Tutorial.DestroyStick,Tutorial.GiveMeat,Tutorial.End};
 
 
     }
@@ -129,6 +130,9 @@ public class TutorialSystem : MonoBehaviour
             case Tutorial.Run:
                 RunUpdate();
                 break;
+            case Tutorial.DestroyStick:
+                DestroyStickUpdate();
+                break; 
             case Tutorial.GiveMeat:
                 GiveMeatUpdate();
                 break;
@@ -291,17 +295,25 @@ public class TutorialSystem : MonoBehaviour
 
     }
 
+    private void DestroyStickUpdate()
+    {
+        manAnim.SetTrigger("destroyStick");
+    }
+
     private void GiveMeatUpdate()
     {
         //play spawn meat anim,
 
         //drop meat
 
+        manAnim.SetTrigger("dropMeat");
+
         Debug.Log("Spawn Meat Action");
 
         if (ClapCour == null)
         {
-            ClapCour = StartCoroutine(ClapCoroutine(true));
+            ClapCour = StartCoroutine(ClapCoroutine(false));
+            TutorialAction.RemoveAt(0);
         }
 
     }
