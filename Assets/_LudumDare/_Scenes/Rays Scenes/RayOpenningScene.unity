@@ -867,6 +867,7 @@ MonoBehaviour:
   barkTime: 0
   isGameStarted: 1
   barkIcon: {fileID: 1331819851}
+  BlackScreen: {fileID: 1331819851}
 --- !u!114 &1207184295
 MonoBehaviour:
   m_ObjectHideFlags: 0
