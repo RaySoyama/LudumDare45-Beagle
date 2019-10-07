@@ -93,6 +93,9 @@ public class TutorialSystem : MonoBehaviour
 
     private Coroutine ClapCour;
 
+    private bool shitTriggered = false;
+
+
     void Start()
     {
         TutorialAction = new List<Tutorial>() { Tutorial.Idle,Tutorial.Sit,Tutorial.Bark,
@@ -249,13 +252,18 @@ public class TutorialSystem : MonoBehaviour
 
     private void GetStickBackUpdate()
     {
-        //go into crouch animation
-        manAnim.SetTrigger("pickUp");
+        if (shitTriggered == false)
+        { 
+            //go into crouch animation
+            manAnim.SetTrigger("pickUp");
+            shitTriggered = true;
+        }
 
         //detect stick avalible
         if (pickupCont.HasSomethingInMouth == false && stickInRange == true)
         {
             //go to throw update
+            shitTriggered = false;
             TutorialAction.RemoveAt(0);
         }
 
@@ -298,6 +306,8 @@ public class TutorialSystem : MonoBehaviour
     private void DestroyStickUpdate()
     {
         manAnim.SetTrigger("destroyStick");
+        TutorialAction.RemoveAt(0);
+
     }
 
     private void GiveMeatUpdate()
@@ -322,6 +332,7 @@ public class TutorialSystem : MonoBehaviour
     {
         //throw some icons
         //disable tutorial Boundries
+
         Debug.Log("End Action");
         TutorialBoundries.SetActive(false);
     }

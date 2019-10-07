@@ -62,8 +62,9 @@ public class CavemanAnimProxy : MonoBehaviour
     }
 
     public void DestroyStick()
-    { 
-    
+    {
+        //Destroy(SpawnedItem);
+        SpawnedItem.SetActive(false);
     }
 
     public void SpawnMeat()
