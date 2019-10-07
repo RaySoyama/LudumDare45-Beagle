@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
-[ExecuteInEditMode]
 public class OpeningSceneCamera : MonoBehaviour
 {
     [SerializeField]
@@ -18,19 +16,83 @@ public class OpeningSceneCamera : MonoBehaviour
     [SerializeField] [Range(0.0f,1.0f)]
     private float thunderVal;
 
+    [SerializeField]
+    private List<float> EffectValue = new List<float>();
+
+    [SerializeField][ReadOnlyField]
+    private int barkCount;
+
+    [SerializeField]
+    private Animator dogAnim;
+
+    [SerializeField][ReadOnlyField]
+    private float barkTime;
 
     public bool isGameStarted = false;
+
+    [SerializeField]
+    private GameObject barkIcon;
 
     void Start()
     { 
         dollyCart.m_Speed = 0;
+        isGameStarted = false;
+        PPMat.SetFloat("_Effect", 222);
+        barkIcon.SetActive(false);
     }
 
     void Update()
     {
+        dogAnim.SetBool("isSitting", true);
+
+        if (Time.timeSinceLevelLoad >= 3.0f)
+        {
+            isGameStarted = true;
+        }
+
         if (isGameStarted == true)
         {
             dollyCart.m_Speed = speed;
+
+            //hard coded
+            if (dollyCart.m_Position >= 17.11724)
+            {
+                barkTime += Time.deltaTime;
+
+                barkIcon.SetActive(true);
+
+                if (InputSystem.WoofInput.IsBark == true)
+                {
+
+                    dogAnim.SetTrigger("Bark");
+
+                    if (barkTime >= 1.0f / 15.0f)
+                    {
+                        if (barkCount == EffectValue.Count)
+                        {
+                            //Load New Scene
+
+
+                        }
+                        else
+                        {
+
+                            barkTime -= 1.0f / 15.0f;
+
+                            PPMat.SetFloat("_Effect", EffectValue[barkCount]);
+                            barkCount++;
+                        }
+
+
+
+
+                    }
+
+                }
+            }
+
+
+
         }
 
 
@@ -40,5 +102,4 @@ public class OpeningSceneCamera : MonoBehaviour
     {
         Graphics.Blit(source, destination, PPMat);
     }
-
 }
