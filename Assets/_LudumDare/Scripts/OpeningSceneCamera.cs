@@ -27,6 +27,9 @@ public class OpeningSceneCamera : MonoBehaviour
     [SerializeField]
     private Animator dogAnim;
 
+    [SerializeField]
+    private Animator manAnim;
+
     [SerializeField][ReadOnlyField]
     private float barkTime;
 
@@ -39,6 +42,7 @@ public class OpeningSceneCamera : MonoBehaviour
     private GameObject BlackScreen;
 
     private Coroutine IHateThis;
+
 
     void Start()
     { 
@@ -79,7 +83,7 @@ public class OpeningSceneCamera : MonoBehaviour
 
                     if (barkTime >= 2.0f / 3.0f)
                     {
-                    dogAnim.SetTrigger("Bark");
+                        dogAnim.SetTrigger("Bark");
                         if (barkCount == EffectValue.Count)
                         {
                             //Load New Scene
@@ -125,6 +129,8 @@ public class OpeningSceneCamera : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         dogAnim.SetTrigger("Bark");
+        manAnim.SetLayerWeight(1, 1);
+        manAnim.SetTrigger("Look");
     }
     
     private IEnumerator ToScene()
@@ -132,5 +138,6 @@ public class OpeningSceneCamera : MonoBehaviour
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("RayDevScene");
     }
+
 
 }
