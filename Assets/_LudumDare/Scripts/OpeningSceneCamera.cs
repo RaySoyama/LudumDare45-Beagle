@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
+
 public class OpeningSceneCamera : MonoBehaviour
 {
     [SerializeField]
@@ -33,12 +35,16 @@ public class OpeningSceneCamera : MonoBehaviour
     [SerializeField]
     private GameObject barkIcon;
 
+    [SerializeField]
+    private GameObject BlackScreen;
+    
     void Start()
     { 
         dollyCart.m_Speed = 0;
         isGameStarted = false;
         PPMat.SetFloat("_Effect", 222);
         barkIcon.SetActive(false);
+        BlackScreen.SetActive(false);
     }
 
     void Update()
@@ -71,7 +77,12 @@ public class OpeningSceneCamera : MonoBehaviour
                         if (barkCount == EffectValue.Count)
                         {
                             //Load New Scene
+                            BlackScreen.SetActive(true);
 
+                            if (barkTime >= 3.0f)
+                            {
+                                SceneManager.LoadScene("RayDevScene");
+                            }
 
                         }
                         else
