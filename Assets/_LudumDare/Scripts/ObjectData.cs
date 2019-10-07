@@ -25,6 +25,9 @@ public class ObjectData : MonoBehaviour
     [SerializeField]
     private bool holdInMouth = true;
 
+    [SerializeField]
+    private AudioClip meatSound;
+
     public bool HoldInMouth
     {
         get 

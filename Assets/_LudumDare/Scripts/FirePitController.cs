@@ -80,6 +80,11 @@ public class FirePitController : MonoBehaviour
 
             foreach (ObjectData chunk in meatChunks)
 			{
+                if (chunk.GetComponent<AudioSource>().isPlaying == false)
+                {
+                    chunk.GetComponent<AudioSource>().Play();
+                }
+
                 chunk.timeInFire += Time.deltaTime;
 
                 if (chunk.timeInFire > timeToCook)
@@ -191,6 +196,7 @@ public class FirePitController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+            GetComponent<AudioSource>().Play();
             fire.SetActive(true);
             innerFireCollider.SetActive(true);
 
