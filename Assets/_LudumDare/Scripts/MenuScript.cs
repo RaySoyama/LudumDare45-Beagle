@@ -9,8 +9,8 @@ public class MenuScript : MonoBehaviour
     public string StartScene;
 
     public void StartGame()
-    {
-        SceneManager.LoadScene(StartScene);
+    {      
+        ScreenFade.SFade.FadeIn(StartScene);
     }
 
     public void ShowCredits()
