@@ -43,7 +43,11 @@ public class WoofMovement : MonoBehaviour
 
     void Update()
     {
-        if (cameraForward == true && InputSystem.WoofInput.DirectionalInput.normalized != Vector2.zero)
+        if (InputSystem.WoofInput.IsEmote == true)
+        {
+            anim.SetBool("isSitting",true);        
+        }
+        else if (cameraForward == true && InputSystem.WoofInput.DirectionalInput.normalized != Vector2.zero)
         {
             //I hope this line of code gets Aids and dies
             Vector3 hori = InputSystem.WoofInput.DirectionalInput.y * new Vector3(mainCamera.transform.forward.normalized.x,0, mainCamera.transform.forward.normalized.z);
@@ -73,6 +77,12 @@ public class WoofMovement : MonoBehaviour
             //gameObject.transform.Translate(new Vector3(InputSystem.WoofInput.DirectionalInput.x,0, InputSystem.WoofInput.DirectionalInput.y) * Speed * Time.deltaTime);
         }
 
+        if (InputSystem.WoofInput.IsEmote == false)
+        {
+            anim.SetBool("isSitting", false);
+        }
+
+
         if (InputSystem.WoofInput.IsDucking == true)
         {
             //anim.SetLayerWeight(2,InputSystem.WoofInput.DuckValue);
@@ -82,6 +92,9 @@ public class WoofMovement : MonoBehaviour
         {
             anim.SetLayerWeight(2, Mathf.Lerp(anim.GetLayerWeight(2), 0, headDownSpeed * Time.deltaTime));
         }
+
+
+
     }
 
     //test

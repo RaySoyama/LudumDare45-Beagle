@@ -107,6 +107,28 @@ public class InputSystem : MonoBehaviour
         }
     }
 
+
+    [SerializeField] [ReadOnlyField]
+    private bool isEmote;
+    public bool IsEmote
+    {
+        get 
+        {
+            return isEmote;
+        }
+    }
+
+    [SerializeField] [ReadOnlyField]
+    private bool isBark;
+    public bool IsBark
+    {
+        get
+        {
+            return isBark;
+        }
+    }
+
+
     [SerializeField] [ReadOnlyField]
     private bool isMenuDown;
     public bool IsMenuDown
@@ -137,7 +159,12 @@ public class InputSystem : MonoBehaviour
     [SerializeField]
     private KeyCode zoomOutKey = KeyCode.LeftShift;
     [SerializeField]
+    private KeyCode emoteKey = KeyCode.E;
+    [SerializeField]
+    private KeyCode barkKey = KeyCode.Space;
+    [SerializeField]
     private KeyCode menuKey = KeyCode.Escape;
+
 
 
 
@@ -155,8 +182,16 @@ public class InputSystem : MonoBehaviour
     private string zoomInButton = "LeftBumper";
     [SerializeField]
     private string zoomOutButton = "RightBumper";
+    
+    [SerializeField]
+    private string emoteButton = "XboxX";
+    [SerializeField]
+    private string barkButton = "RightTrigger";
+    
     [SerializeField]
     private string menuButton = "Start";
+    
+
 
     public InputMode inputMode;
 
@@ -174,14 +209,14 @@ public class InputSystem : MonoBehaviour
     {
         if (Input.GetAxis(joystickHorizontal) != 0.0f || Input.GetAxis(joystickVertical) != 0.0f || Input.GetButton(runButton) || 
             Input.GetButton(grabButton) || Input.GetAxis(duckButton) != 0.0f || Input.GetButton(zoomInButton) || 
-            Input.GetButton(zoomOutButton) || Input.GetButtonDown(menuButton))
+            Input.GetButton(zoomOutButton) || Input.GetButton(emoteButton) || Input.GetAxis(barkButton) != 0.0f || Input.GetButtonDown(menuButton))
         {
             inputMode = InputMode.Controller;
         }
 
         if (Input.GetKey(forwardKey) || Input.GetKey(backwardKey) || Input.GetKey(rightwardKey) ||
-            Input.GetKey(leftwardKey) || Input.GetKey(runKey) || Input.GetMouseButton(grabKeyMouseIdx) || Input.GetMouseButton(duckKeyMouseIdx) || Input.GetKey(zoomInKey) ||
-            Input.GetKey(zoomOutKey) || Input.GetKeyDown(menuKey)) //||Input.GetKey()
+            Input.GetKey(leftwardKey) || Input.GetKey(runKey) || Input.GetMouseButton(grabKeyMouseIdx) || Input.GetMouseButton(duckKeyMouseIdx) ||
+           Input.GetKey(barkKey) || Input.GetKey(emoteKey) || Input.GetKey(zoomInKey) || Input.GetKey(zoomOutKey) || Input.GetKeyDown(menuKey)) //||Input.GetKey()
         {
             inputMode = InputMode.Keyboard;
         }
@@ -214,6 +249,21 @@ public class InputSystem : MonoBehaviour
         {
             isDucking = false;        
         }
+
+        //Input.GetButton(emoteButton) || Input.GetAxis(barkButton) != 0.0f
+
+        isEmote = Input.GetButton(emoteButton);
+
+        if (Input.GetAxis(barkButton) >= 0.1f)
+        {
+            isBark = true;
+        }
+        else
+        { 
+            isBark = false;
+        }
+
+
 
         isMenuDown = Input.GetButtonDown(menuButton);
 
@@ -256,6 +306,10 @@ public class InputSystem : MonoBehaviour
         {
             duckValue = 0;
         }
+
+       isBark  = Input.GetKeyDown(barkKey);
+       isEmote = Input.GetKey(emoteKey);
+
 
         isZoomingIn = Input.GetKey(zoomInKey);
         isZoomingOut = Input.GetKey(zoomOutKey);
