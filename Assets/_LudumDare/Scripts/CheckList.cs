@@ -26,7 +26,9 @@ public class CheckList : MonoBehaviour
 
     public bool isGoodBoi = false;
 
+    public Font JPFont;
 
+    public Font ENFont;
 
 
     void Start()
@@ -36,6 +38,7 @@ public class CheckList : MonoBehaviour
             ShitList = this;
         }
 
+        UpdateList();
         checkListOpen = false;
         menuCanvas.SetActive(false);
     }
@@ -53,26 +56,59 @@ public class CheckList : MonoBehaviour
     private void UpdateList()
     {
 
-        if (isTutorialComplete == false)
+        if (ScreenFade.SFade.isJapanese == false)
         {
-            checkListText.text = $"Current Task: Complete Tutorial";
+            checkListText.font = ENFont;
+
+            if (isTutorialComplete == false)
+            {
+                checkListText.text = $"Current Task: Complete Tutorial";
+            }
+            else if (isSticksCollected == false)
+            {
+                checkListText.text = $"Current Task: \nGather 5 Sticks in the Fire Pit";
+            }
+            else if (isManCalled == false)
+            {
+                checkListText.text = $"Current Task: Bark for Attention";
+            }
+            else if (isMeatCooked == false)
+            {
+                checkListText.text = $"Current Task: Cook Meat";
+            }
+            else if (isGoodBoi == false)
+            {
+                checkListText.text = $"Current Task: Be A Good Boi\nSit n' Speak";
+            }
         }
-        else if (isSticksCollected == false)
+        else
         {
-            checkListText.text = $"Current Task: \nGather 5 Sticks in the Fire Pit";
+
+            checkListText.font = JPFont;
+
+            if (isTutorialComplete == false)
+            {
+                checkListText.text = $"もくてき：チュートリアル　を　しあげる。";
+            }
+            else if (isSticksCollected == false)
+            {
+                checkListText.text = $"もくてき：五本のボーを\nキャンプファイアーに\nあつめる。";
+            }
+            else if (isManCalled == false)
+            {
+                checkListText.text = $"もくてき：ワン！";
+            }
+            else if (isMeatCooked == false)
+            {
+                checkListText.text = $"もくてき： 肉をやく。";
+            }
+            else if (isGoodBoi == false)
+            {
+                checkListText.text = $"もくてき： Be A Good Boi\nすわって、ワン！";
+            }
+
         }
-        else if (isManCalled == false)
-        {
-            checkListText.text = $"Current Task: Bark for Attention";
-        }
-        else if (isMeatCooked == false)
-        {
-            checkListText.text = $"Current Task: Cook Meat";
-        }
-        else if (isGoodBoi == false)
-        { 
-            checkListText.text = $"Current Task: Be A Good Boi\nSit n' Speak";
-        }
+        
     }
 
     public void ToggleCheckList()

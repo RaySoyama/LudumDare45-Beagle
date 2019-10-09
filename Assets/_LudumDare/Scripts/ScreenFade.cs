@@ -9,6 +9,9 @@ public class ScreenFade : MonoBehaviour
 
     public static ScreenFade SFade;
 
+    public bool isJapanese;
+    public bool isKeyboard;
+
     [SerializeField][Range(0.0f, 5.0f)]
     private float transitionDuraion;
 
@@ -35,6 +38,7 @@ public class ScreenFade : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         FadeOut();
+
     }
 
     private Coroutine check;
@@ -70,6 +74,16 @@ public class ScreenFade : MonoBehaviour
 
     private IEnumerator FadeInCor(string newScene)
     {
+
+        if (InputSystem.WoofInput.inputMode == InputSystem.InputMode.Keyboard)
+        {
+            isKeyboard = true;
+        }
+        else
+        {
+            isKeyboard = false;
+        }
+
         float n = 0;
         img.gameObject.SetActive(true);
         while (n < transitionDuraion)
@@ -81,6 +95,7 @@ public class ScreenFade : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+
         SceneManager.LoadScene(newScene);
         check = null;
     }   
@@ -88,6 +103,15 @@ public class ScreenFade : MonoBehaviour
     private IEnumerator FadeOutCor()
     {
         float n = 0;
+
+        if (isKeyboard == true)
+        {
+            InputSystem.WoofInput.inputMode = InputSystem.InputMode.Keyboard;
+        }
+        else
+        {
+            InputSystem.WoofInput.inputMode = InputSystem.InputMode.Controller;
+        }
 
         while (n < transitionDuraion)
         {
@@ -98,6 +122,7 @@ public class ScreenFade : MonoBehaviour
         }
         img.gameObject.SetActive(false);
         check = null;
+
     }
 
 

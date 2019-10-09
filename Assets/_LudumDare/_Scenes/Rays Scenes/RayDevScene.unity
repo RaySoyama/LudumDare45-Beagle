@@ -2997,6 +2997,8 @@ MonoBehaviour:
   isManCalled: 0
   isMeatCooked: 0
   isGoodBoi: 0
+  JPFont: {fileID: 12800000, guid: ffcbea3b28e9ed0488905a881182291d, type: 3}
+  ENFont: {fileID: 12800000, guid: c581a9695843de44db5efb0cb91f3279, type: 3}
 --- !u!82 &1435910600
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5579,6 +5581,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoofPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6381283423262789302, guid: 59080c8bc0a5f60438c1de9dd2626c9c,
+        type: 3}
+      propertyPath: pickupIndicator
+      value: 
+      objectReference: {fileID: 1331819851}
     - target: {fileID: 6212023065158120763, guid: 59080c8bc0a5f60438c1de9dd2626c9c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5634,11 +5641,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6381283423262789302, guid: 59080c8bc0a5f60438c1de9dd2626c9c,
-        type: 3}
-      propertyPath: pickupIndicator
-      value: 
-      objectReference: {fileID: 1331819851}
     - target: {fileID: 1199638213870615361, guid: 59080c8bc0a5f60438c1de9dd2626c9c,
         type: 3}
       propertyPath: m_audioClip

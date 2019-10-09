@@ -129,7 +129,8 @@ public class TutorialSystem : MonoBehaviour
                                                 Tutorial.Run,Tutorial.GetStickBack,Tutorial.DestroyStick,Tutorial.GiveMeat,
                                                 Tutorial.Menu,Tutorial.WalkToFarm,Tutorial.Farm,Tutorial.WalkToFire, Tutorial.LightFire, Tutorial.End};
 
-        StartPos = transform.position;
+        StartPos = transform.position;        
+
     }
 
     void Update()
@@ -509,7 +510,7 @@ public class TutorialSystem : MonoBehaviour
     public AudioSource ass;
     private void EndUpdate()
     {
-        if (InputSystem.WoofInput.IsEmote == true && InputSystem.WoofInput.IsBark == true)
+        if (InputSystem.WoofInput.IsEmote == true && InputSystem.WoofInput.IsBark == true && CheckList.ShitList.isMeatCooked == true)
         {
             if (ClapCour == null)
             {
