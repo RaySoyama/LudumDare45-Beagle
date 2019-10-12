@@ -48,15 +48,10 @@ public class PickupController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Break();
-        }
-
 
         if (avaliblePickups.Count != 0)
         {
-            float closestDistance = 69696969696969;
+            float closestDistance = 6969696969;
             GameObject closestGrabpoint = null;
             ObjectData closestObjectData = null;
 

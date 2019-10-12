@@ -124,7 +124,6 @@ public class FirePitController : MonoBehaviour
 				if (!meatChunks.Contains(other.GetComponent<ObjectData>()))
 				{
 					meatChunks.Add(other.GetComponent<ObjectData>());
-                    Debug.Log("meat added");
 				}
 			}
 		}
@@ -143,7 +142,6 @@ public class FirePitController : MonoBehaviour
                 if (!meatChunks.Contains(other.GetComponent<ObjectData>()))
                 {
                     meatChunks.Add(other.GetComponent<ObjectData>());
-                    Debug.Log("meat added");
                 }
             }
         }
@@ -171,7 +169,6 @@ public class FirePitController : MonoBehaviour
                 if (meatChunks.Contains(other.GetComponent<ObjectData>()))
                 {
                     meatChunks.Remove(other.GetComponent<ObjectData>());
-                    Debug.Log("meat removed");
                 }
             }
 			

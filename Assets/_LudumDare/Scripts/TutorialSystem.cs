@@ -267,7 +267,6 @@ public class TutorialSystem : MonoBehaviour
         manAnim.SetTrigger("drop");
 
         //wait till animation ends
-        Debug.Log("Spawn Stick Action");
         TutorialAction.RemoveAt(0);
     }
 
@@ -322,7 +321,6 @@ public class TutorialSystem : MonoBehaviour
         //wait till animation
         if (nValue == 0)
         { 
-            Debug.Log("Throw Stick Action");
             manAnim.SetTrigger("throw");
         }
         
@@ -375,7 +373,6 @@ public class TutorialSystem : MonoBehaviour
 
 
 
-        Debug.Log("Spawn Meat Action");
 
         if (ClapCour == null)
         {

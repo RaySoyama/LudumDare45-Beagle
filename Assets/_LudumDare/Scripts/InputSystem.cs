@@ -289,8 +289,14 @@ public class InputSystem : MonoBehaviour
 
         isRunning = Input.GetKey(runKey);
 
-        isGrabbing = Input.GetMouseButton(grabKeyMouseIdx);
-        isDucking = Input.GetMouseButton(duckKeyMouseIdx);
+
+        isGrabbing = Input.GetMouseButton(grabKeyMouseIdx) || Input.GetKey(KeyCode.J);
+        isDucking = Input.GetMouseButton(duckKeyMouseIdx) || Input.GetKey(KeyCode.K);
+
+        //isDucking = Input.GetKey(KeyCode.K);
+        //isGrabbing = Input.GetKey(KeyCode.J);
+
+
         if (isDucking == true)
         {
             duckValue = 1;
