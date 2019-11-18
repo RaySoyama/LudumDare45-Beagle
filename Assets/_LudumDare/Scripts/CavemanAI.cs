@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class TutorialSystem : MonoBehaviour
+public class CavemanAI : MonoBehaviour
 {
 
-     /*
+    /*
+     * This script was made for the Game "Beagal" made during the Ludum Dare Game Jam
+     * 
      * This script is attached to the Caveman NPC.
      * It detects the state of the dog/player and determine what actions need to be taken
      * Basic Behaviour tree
@@ -15,7 +17,7 @@ public class TutorialSystem : MonoBehaviour
 
 
 
-    /*
+    /* Action list
      * 1.Movement key icon
      * 2.Villager making noise
      * 3.Dog in range of vilager
